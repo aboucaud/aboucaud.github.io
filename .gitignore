@@ -1,9 +1,0 @@
-node_modules
-js
-scss
-css
-img
-.travis.yml
-gulpfile.js
-package-lock.json
-package.json
