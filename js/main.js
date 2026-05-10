@@ -1,18 +1,14 @@
-/* ── Active nav link via IntersectionObserver ────────────────────── */
+/* ── Palette toggle ───────────────────────────────────────────────── */
+function setPalette(p) {
+  document.getElementById('site').classList.toggle('sage', p === 'sage');
+  document.getElementById('btn-blue').classList.toggle('active', p === 'blue');
+  document.getElementById('btn-sage').classList.toggle('active', p === 'sage');
+  try { localStorage.setItem('palette', p); } catch (_) {}
+}
+
 (function () {
-  const sections = document.querySelectorAll('section[id]');
-  const links    = document.querySelectorAll('.nav-links a[href^="#"]');
-  if (!sections.length || !links.length) return;
-
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      const id = entry.target.id;
-      links.forEach(a =>
-        a.classList.toggle('active', a.getAttribute('href') === '#' + id)
-      );
-    }
-  }, { rootMargin: '-50% 0px -50% 0px' });
-
-  sections.forEach(s => observer.observe(s));
+  try {
+    const saved = localStorage.getItem('palette');
+    if (saved === 'sage') setPalette('sage');
+  } catch (_) {}
 }());

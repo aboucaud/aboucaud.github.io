@@ -42,200 +42,200 @@
 
 <body>
 
-  <nav id="site-nav" aria-label="Site navigation">
-    <div class="nav-inner">
-      <a class="nav-logo" href="#about" aria-label="Alexandre Boucaud — top of page">AB</a>
+  <div class="palette-ui" aria-label="Colour palette selector">
+    <span class="palette-ui-label">Palette</span>
+    <button class="pal-btn active" id="btn-blue" onclick="setPalette('blue')">Bleu ardoise</button>
+    <button class="pal-btn" id="btn-sage" onclick="setPalette('sage')">Vert sauge</button>
+  </div>
+
+  <div class="site" id="site">
+
+    <div class="topbar" aria-hidden="true"></div>
+
+    <nav aria-label="Site navigation">
+      <span class="nav-name">Alexandre Boucaud</span>
       <ul class="nav-links" role="list">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#tutorials">Tutorials</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-main">
+        <p class="hero-eyebrow">Astronomer · Data Scientist · Software Engineer</p>
+        <h1 class="hero-title">Science meets<br><em>computation.</em></h1>
+        <div class="hero-divider" aria-hidden="true"></div>
+        <p class="hero-bio">
+          I build software and pipelines for large-scale astronomical experiments —
+          <strong>LSST</strong>, <strong>Euclid</strong>, <strong>LISA</strong> — at the intersection of
+          signal processing, machine learning, and observational cosmology.
+          Based in Paris, working at <a href="http://www.apc.univ-paris7.fr/APC_CS/">APC · CNRS</a>.
+        </p>
+      </div>
+      <div class="hero-side">
+        <div class="side-block">
+          <p class="side-key">Institution</p>
+          <p class="side-val"><a href="http://www.apc.univ-paris7.fr/APC_CS/">APC · CNRS</a> · Paris</p>
+        </div>
+        <div class="side-block">
+          <p class="side-key">Experiments</p>
+          <p class="side-val">
+            <a href="https://www.lsst.org/">LSST</a> ·
+            <a href="https://www.euclid-ec.org/">Euclid</a> ·
+            <a href="https://www.elisascience.org/">LISA</a>
+          </p>
+        </div>
+        <div class="side-block">
+          <p class="side-key">Specialties</p>
+          <div class="side-tags" role="list">
+            <span class="side-tag" role="listitem">Deep learning</span>
+            <span class="side-tag" role="listitem">Cosmology</span>
+            <span class="side-tag" role="listitem">Python</span>
+            <span class="side-tag" role="listitem">Data pipelines</span>
+            <span class="side-tag" role="listitem">Signal processing</span>
+          </div>
+        </div>
+        <div class="side-block">
+          <p class="side-key">Links</p>
+          <p class="side-val">
+            <a href="https://github.com/aboucaud">GitHub</a> ·
+            <a href="https://www.linkedin.com/in/aboucaud/">LinkedIn</a> ·
+            <a href="https://orcid.org/0000-0001-7387-2633">ORCID</a>
+          </p>
+        </div>
+      </div>
     </div>
-  </nav>
 
-  <section id="hero" aria-label="Introduction">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Scientific Software Engineer</p>
-      <h1>Alexandre<br>Boucaud</h1>
-      <p class="hero-tagline">Astronomer&ensp;·&ensp;Data Scientist&ensp;·&ensp;<a href="http://www.cnrs.fr/en/cnrs">CNRS</a></p>
-      <div class="hero-links">
-        <a href="https://bsky.app/profile/aboucaud.bsky.social" class="hero-link" aria-label="Bluesky">bsky</a>
-        <a href="https://twitter.com/alxbcd" class="hero-link" aria-label="Twitter / X">tw</a>
-        <a href="https://www.linkedin.com/in/aboucaud/" class="hero-link" aria-label="LinkedIn">li</a>
-        <a href="https://github.com/aboucaud" class="hero-link" aria-label="GitHub">gh</a>
-        <a href="https://orcid.org/0000-0001-7387-2633" class="hero-link" aria-label="ORCID">id</a>
-        <span class="hero-email">aboucaud @ apc.in2p3.fr</span>
+    <div class="photo-strip" aria-hidden="true">
+      <div class="photo"><span class="photo-caption">Cerro Pachón · Chile</span></div>
+      <div class="photo"><span class="photo-caption">LSST camera</span></div>
+      <div class="photo"><span class="photo-caption">Galaxy morphology</span></div>
+      <div class="photo"><span class="photo-caption">Sky survey data</span></div>
+    </div>
+
+    <section id="projects" class="section">
+      <header class="section-header">
+        <h2 class="section-title">Projects &amp; Experiments</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+        <span class="section-meta">Selected work</span>
+      </header>
+      <div class="projects-grid">
+        <article class="project-card">
+          <p class="project-tag">Survey · Camera</p>
+          <h3 class="project-name">LSST / Rubin Observatory</h3>
+          <p class="project-desc">Software development for the camera control system and image processing pipelines of the Legacy Survey of Space and Time at Vera C. Rubin Observatory.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://www.lsst.org/">Website</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <p class="project-tag">Space mission · ESA</p>
+          <h3 class="project-name">Euclid</h3>
+          <p class="project-desc">Deep learning methods for galaxy image analysis and weak lensing pipelines for ESA's Euclid dark energy mission. Science ground segment integration.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://www.euclid-ec.org/">Website</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <p class="project-tag">Gravitational waves · ESA</p>
+          <h3 class="project-name">LISA</h3>
+          <p class="project-desc">Data processing pipeline development for the Laser Interferometer Space Antenna, the future space-based gravitational wave detector.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://www.elisascience.org/">Website</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <p class="project-tag">Open source · ML</p>
+          <h3 class="project-name">RAMP Platform</h3>
+          <p class="project-desc">Rapid Analytics and Model Prototyping — an open platform for collaborative data science challenges bridging domain scientists and ML experts.</p>
+          <div class="project-links">
+            <a class="project-link" href="http://ramp.studio">Platform</a>
+            <a class="project-link" href="https://github.com/paris-saclay-cds/ramp-workflow">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="talks" class="section section-alt">
+      <header class="section-header">
+        <h2 class="section-title">Talks &amp; Teaching</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+        <span class="section-meta">Tutorials &amp; lectures</span>
+      </header>
+      <div class="talks-list" role="list">
+        <div class="talk-row" role="listitem">
+          <span class="talk-year">2018</span>
+          <a class="talk-title" href="https://aboucaud.github.io/adaix-ml-tutorial/slides/hands-on-deep-learning">Hands-on deep learning with Keras</a>
+          <span class="talk-venue">AdaIX Summer School</span>
+        </div>
+        <div class="talk-row" role="listitem">
+          <span class="talk-year">2017</span>
+          <a class="talk-title" href="https://aboucaud.github.io/slides/2017/gitlab-ci">Continuous integration with GitLab-CI</a>
+          <span class="talk-venue">APC · CNRS</span>
+        </div>
+        <div class="talk-row" role="listitem">
+          <span class="talk-year">2017</span>
+          <a class="talk-title" href="https://aboucaud.github.io/slides/2017/git-advanced">Git advanced workflow</a>
+          <span class="talk-venue">APC · CNRS</span>
+        </div>
+        <div class="talk-row" role="listitem">
+          <span class="talk-year">2017</span>
+          <a class="talk-title" href="https://aboucaud.github.io/slides/2017/git-tutorial">Introduction to Git</a>
+          <span class="talk-venue">APC · CNRS</span>
+        </div>
+        <div class="talk-row" role="listitem">
+          <span class="talk-year">2016</span>
+          <a class="talk-title" href="https://aboucaud.github.io/slides/2016/python-classes">Object-oriented Python: classes</a>
+          <span class="talk-venue">IAS · Université Paris-Saclay</span>
+        </div>
+        <div class="talk-row" role="listitem">
+          <span class="talk-year">2016</span>
+          <a class="talk-title" href="https://aboucaud.github.io/slides/2016/python-docstrings">Documenting code with docstrings</a>
+          <span class="talk-venue">IAS · Université Paris-Saclay</span>
+        </div>
+        <div class="talk-row" role="listitem">
+          <span class="talk-year">2016</span>
+          <a class="talk-title" href="https://aboucaud.github.io/slides/2016/python-cheatsheet">Scientific Python cheatsheet</a>
+          <span class="talk-venue">IAS · Université Paris-Saclay</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="contact-section" id="contact">
+      <p class="contact-tagline">
+        Let's talk about<br><em>science, code,</em><br>or both.
+      </p>
+      <div class="contact-links">
+        <a class="contact-link-row" href="mailto:aboucaud@apc.in2p3.fr">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-url">aboucaud@apc.in2p3.fr</span>
+        </a>
+        <a class="contact-link-row" href="https://bsky.app/profile/aboucaud.bsky.social">
+          <span class="contact-link-label">Bluesky</span>
+          <span class="contact-link-url">@aboucaud.bsky.social</span>
+        </a>
+        <a class="contact-link-row" href="https://github.com/aboucaud">
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-url">github.com/aboucaud</span>
+        </a>
+        <a class="contact-link-row" href="https://www.linkedin.com/in/aboucaud/">
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-url">linkedin.com/in/aboucaud</span>
+        </a>
+        <a class="contact-link-row" href="https://orcid.org/0000-0001-7387-2633">
+          <span class="contact-link-label">ORCID</span>
+          <span class="contact-link-url">0000-0001-7387-2633</span>
+        </a>
       </div>
     </div>
-  </section>
 
-  <main>
+    <footer>
+      <span class="footer-name">Alexandre Boucaud</span>
+      <span class="footer-copy">APC · CNRS · Paris</span>
+    </footer>
 
-    <section id="about" class="section">
-      <header class="section-head">
-        <span class="section-num" aria-hidden="true">01</span>
-        <h2>About</h2>
-      </header>
-      <div class="section-body">
-        <p>I am a scientific software engineer specialised in data processing for large-scale astronomical experiments. Always eager to learn new technologies, I like to share my knowledge by giving tutorials for developers or the general public.</p>
-        <p>During my free time I mostly enjoy traveling, climbing and dancing salsa and swing.</p>
-      </div>
-    </section>
-
-    <section id="experience" class="section">
-      <header class="section-head">
-        <span class="section-num" aria-hidden="true">02</span>
-        <h2>Experience</h2>
-      </header>
-      <div class="section-body">
-        <ol class="timeline">
-
-          <li class="timeline-item">
-            <time class="timeline-date" datetime="2018-12">Dec 2018 — Present</time>
-            <div class="timeline-body">
-              <h3>Scientific Software Engineer</h3>
-              <p class="timeline-org"><a href="http://www.apc.univ-paris7.fr/APC_CS/">Laboratoire Astroparticule et Cosmologie (APC), CNRS</a></p>
-              <ul>
-                <li>Camera control for <a href="https://www.lsst.org/">LSST</a></li>
-                <li>Data processing pipeline development for <a href="https://www.elisascience.org/">LISA</a></li>
-                <li>Deep learning on galaxy images for <a href="https://www.euclid-ec.org/">Euclid</a> &amp; <a href="https://www.lsst.org/">LSST</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="timeline-item">
-            <time class="timeline-date" datetime="2017-05">May 2017 — Nov 2018</time>
-            <div class="timeline-body">
-              <h3>Data Scientist · Scientific Software Engineer</h3>
-              <p class="timeline-org"><a href="http://www.datascience-paris-saclay.fr">Paris-Saclay Center for Data Science</a></p>
-              <p>Bridged domain scientists and machine learning experts through collaborative data science challenges. Core contributor to <a href="http://ramp.studio">RAMP</a>, an open-source challenge ecosystem.</p>
-            </div>
-          </li>
-
-          <li class="timeline-item">
-            <time class="timeline-date" datetime="2013-10">Oct 2013 — Apr 2017</time>
-            <div class="timeline-body">
-              <h3>Research Engineer</h3>
-              <p class="timeline-org"><a href="https://www.ias.u-psud.fr/">Institut d'Astrophysique Spatiale (IAS)</a></p>
-              <p>Local deputy project manager for <a href="https://www.euclid-ec.org">Euclid</a> science ground segment. Led development and integration of image processing algorithms; coordinated Python standards across the collaboration.</p>
-            </div>
-          </li>
-
-        </ol>
-      </div>
-    </section>
-
-    <section id="education" class="section">
-      <header class="section-head">
-        <span class="section-num" aria-hidden="true">03</span>
-        <h2>Education</h2>
-      </header>
-      <div class="section-body">
-        <ol class="timeline">
-
-          <li class="timeline-item">
-            <time class="timeline-date" datetime="2010">2010 — 2013</time>
-            <div class="timeline-body">
-              <h3>PhD in Cosmology</h3>
-              <p class="timeline-org">Université Paris Diderot &amp; <a href="http://www.apc.univ-paris7.fr/APC_CS/">APC, CNRS</a></p>
-              <p><a href="https://tel.archives-ouvertes.fr/tel-00983440/document">Thesis manuscript →</a></p>
-            </div>
-          </li>
-
-          <li class="timeline-item">
-            <time class="timeline-date" datetime="2007">2007 — 2010</time>
-            <div class="timeline-body">
-              <h3>MSc in Fundamental Physics &amp; Engineering</h3>
-              <p class="timeline-org">Université Paris Diderot</p>
-            </div>
-          </li>
-
-        </ol>
-      </div>
-    </section>
-
-    <section id="skills" class="section">
-      <header class="section-head">
-        <span class="section-num" aria-hidden="true">04</span>
-        <h2>Skills</h2>
-      </header>
-      <div class="section-body skills-grid">
-
-        <div class="skill-group">
-          <h3 class="label-heading">Scientific Computing</h3>
-          <ul>
-            <li>Signal processing &amp; deep learning</li>
-            <li>Keras · TensorFlow · PyTorch</li>
-            <li>Python — refactoring, optimisation, tutoring</li>
-          </ul>
-        </div>
-
-        <div class="skill-group">
-          <h3 class="label-heading">Engineering</h3>
-          <ul>
-            <li>Test-driven development</li>
-            <li>Continuous integration</li>
-            <li>Scala · Java · SQL · PostgreSQL</li>
-          </ul>
-        </div>
-
-        <div class="skill-group">
-          <h3 class="label-heading">Infrastructure</h3>
-          <ul>
-            <li>macOS · Linux</li>
-            <li>AWS · Docker</li>
-            <li>Strong scientific background</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="tutorials" class="section">
-      <header class="section-head">
-        <span class="section-num" aria-hidden="true">05</span>
-        <h2>Tutorials</h2>
-      </header>
-      <div class="section-body">
-        <p class="tutorials-intro">Technical presentations — use arrow keys to navigate within slides.</p>
-        <div class="tutorial-groups">
-
-          <div class="tutorial-group">
-            <h3 class="label-heading">Python</h3>
-            <ul class="tutorial-list">
-              <li><a href="https://aboucaud.github.io/slides/2016/python-classes">Object-oriented Python: classes →</a></li>
-              <li><a href="https://aboucaud.github.io/slides/2016/python-docstrings">Documenting code with docstrings →</a></li>
-              <li><a href="https://aboucaud.github.io/slides/2016/python-cheatsheet">Scientific cheatsheet →</a></li>
-            </ul>
-          </div>
-
-          <div class="tutorial-group">
-            <h3 class="label-heading">Git &amp; CI</h3>
-            <ul class="tutorial-list">
-              <li><a href="https://aboucaud.github.io/slides/2017/git-tutorial">Introduction to Git →</a></li>
-              <li><a href="https://aboucaud.github.io/slides/2017/git-advanced">Git advanced workflow →</a></li>
-              <li><a href="https://aboucaud.github.io/slides/2017/gitlab-ci">Continuous integration with GitLab-CI →</a></li>
-            </ul>
-          </div>
-
-          <div class="tutorial-group">
-            <h3 class="label-heading">Deep Learning</h3>
-            <ul class="tutorial-list">
-              <li><a href="https://aboucaud.github.io/adaix-ml-tutorial/slides/hands-on-deep-learning">Hands-on deep learning with Keras →</a></li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>Alexandre Boucaud&ensp;·&ensp;Paris, France</p>
-  </footer>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
