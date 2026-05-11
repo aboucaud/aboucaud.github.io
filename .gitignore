@@ -1,8 +1,6 @@
+CLAUDE.md
+inputs
 node_modules
-js
-scss
-css
-img
 .travis.yml
 gulpfile.js
 package-lock.json
