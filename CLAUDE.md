@@ -18,11 +18,9 @@ To publish changes, merge or push to `gh-pages`.
 All content lives in `index.html`. Sections: `#projects`, `#talks`, `#contact` (plus `#carousel` in the hero).
 
 - `css/resume.css` — custom styles (the only stylesheet to edit)
-- `js/main.js` — vanilla JS: palette toggle (`.sage` class on `#site`) + photo carousel
-- `js/resume.min.js` — legacy template JS, kept but not used in the redesign
-- `fonts/` — self-hosted woff2 files (Instrument Serif, Space Grotesk, Fraunces, IBM Plex)
+- `js/main.js` — vanilla JS: photo carousel only (auto-advance, prev/next, dots, pause-on-hover)
+- `fonts/` — self-hosted woff2 files (Instrument Serif, Space Grotesk — the only two active fonts)
 - `inputs/` — source assets: LaTeX CV (`main.tex`), design mockup (`mockup.html`), raw images
-- `vendor/` — vendored libraries from the original template (not imported in the redesign)
 
 No build tooling — edits are made directly to `css/resume.css` and `index.html`.
 
@@ -51,11 +49,15 @@ Layout principles:
 
 ## Deployment
 
-GitHub Actions (`deploy.yml`) auto-deploys `master` → `gh-pages` on push. Dev work happens on feature branches merged to `master`. The following files are excluded from the published site: `CLAUDE.md`, `TODO.md`, `.github`, `README.rst`.
+GitHub Actions (`deploy.yml`) auto-deploys `master` → `gh-pages` on push. Dev work happens on feature branches merged to `master`. The following files are excluded from the published site: `CLAUDE.md`, `.github`, `README.md`.
 
 ## Palette toggle
 
-Already implemented. The `.sage` CSS class on `#site` switches to Vert sauge. `setPalette()` in `main.js` manages the toggle and persists selection to `localStorage`.
+**Not implemented.** The two palette definitions exist as CSS comments for reference, but the `.sage` selector, toggle UI, and `setPalette()` function have been removed. The active palette is Vert sauge (green accent `#3d6b57`) set directly in `:root`.
+
+## Carousel maintenance
+
+Dot count must always equal slide count. Every `.carousel-slide` added to `.carousel-slides` requires a matching `.dot` button in `.carousel-dots`, or the JS will crash when it reaches the undotted slide.
 
 ## Previewing
 

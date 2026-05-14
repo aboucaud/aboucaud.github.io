@@ -20,4 +20,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
           publish_branch: gh-pages
-          exclude_assets: '.gitignore,.github,CLAUDE.md,TODO.md,README.rst'
+          exclude_assets: '.gitignore,.github,CLAUDE.md,README.md'
