@@ -18,11 +18,33 @@ To publish changes, merge or push to `gh-pages`.
 All content lives in `index.html`. Sections: `#projects`, `#talks`, `#contact` (plus `#carousel` in the hero).
 
 - `css/resume.css` — custom styles (the only stylesheet to edit)
-- `js/main.js` — vanilla JS: photo carousel only (auto-advance, prev/next, dots, pause-on-hover)
+- `js/data.js` — single source of truth for personal info (name, email, institution, social links); edit this to update repeated values across the page
+- `js/main.js` — vanilla JS: config fill + photo carousel (auto-advance, prev/next, dots, pause-on-hover)
 - `fonts/` — self-hosted woff2 files (Instrument Serif, Space Grotesk — the only two active fonts)
 - `inputs/` — source assets: LaTeX CV (`main.tex`), design mockup (`mockup.html`), raw images
 
-No build tooling — edits are made directly to `css/resume.css` and `index.html`.
+No build tooling — edits are made directly to `css/resume.css`, `js/data.js`, and `index.html`.
+
+## Link conventions
+
+External links that should open in a new tab get a semantic class instead of inline `target`/`rel` attributes — JS applies those automatically at page load:
+
+- `.project-link` — links inside project cards
+- `.side-link` — links in the hero sidebar and JS-rendered blocks (institution, social links)
+- `.talk-link` — links in the teaching and PhD supervision lists
+
+Contact section links are rendered entirely from `js/data.js`; their `target`/`rel` are set in the JS template. The mailto link intentionally has no `target`.
+
+## `js/data.js` — personal info config
+
+To update a name, URL, or social handle, edit only `js/data.js`. The following are rendered from it at runtime (the HTML elements are empty placeholders):
+
+- `SITE.name` → nav, hero `<h1>`, footer
+- `SITE.institution.{lab,cnrs,footer}` → hero Institution block, footer text
+- `SITE.links` → hero Links block, contact section social rows
+- `SITE.email` → contact section email row
+
+`<head>` meta tags and JSON-LD structured data remain static in `index.html` (they are read before JS runs).
 
 ## Design
 
