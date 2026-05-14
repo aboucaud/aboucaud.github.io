@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/aboucaud
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://aboucaud.github.io
+  * I am aboucaud (https://keybase.io/aboucaud) on keybase.
+  * I have a public key with fingerprint EDD1 74D9 AC29 33A9 0778  84D8 80EF DA9F C744 ED5C
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101b90c1cf053798281277698439bd3e106734b5bc0232a03273db981fb3ae697be0a",
+      "fingerprint": "edd174d9ac2933a9077884d880efda9fc744ed5c",
+      "host": "keybase.io",
+      "key_id": "80efda9fc744ed5c",
+      "kid": "0101b90c1cf053798281277698439bd3e106734b5bc0232a03273db981fb3ae697be0a",
+      "uid": "b495394899e2ef14c384ed3cce6cc919",
+      "username": "aboucaud"
+    },
+    "service": {
+      "hostname": "aboucaud.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1532363591,
+  "expire_in": 157680000,
+  "prev": "0b9959addbc2908b56e994355ec8ed17f30c586fa086a373930d1375599ce57f",
+  "seqno": 10,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.77
+Comment: https://keybase.io/crypto
+
+yMIqAnicrVJbSBRRGF7dNHS7aQSVQThEdDGdmTOXc7YLhNAGkUV0sesy58yZ3WnX
+nXVmdm0za4lILAWhXoqS6CmQLvRgZRFlQWJgPWRhDxZmV5IihYpAO2P1Ej12Xg7n
+P9/3/f/3///9qX5fYc6PA+vDRfb+bM7Du20p386t/lA9hy09wwXruRiduGhcp44b
+jpk6F+R4gRcw4olADF4GKoIiFERVVRCUAMI6oAKvqEDCMia8CESNB6IKdIygYGCg
+UQWpmPIaV8YZZiJC7aRtJlwmS3VdUCUdaUREAGiIV1UIJR1Cnhq6hgyiShLVZcKI
+UcvxGKw4rDm03LRYjD3CE+X9A/+f605NyGEJyQBJECEqUkOQCIAsHyCEKoQgAXlA
+h9oJrYYytIatFNFSOtdQxrFo2iTUa6zn5C9EecR0oyn8y1XStlyLWHH2H3XdpBP0
++G4m6RHqKA7/lgpjM6GzbjJGmtqOaSW4oMCQxDU9bUEGIlCAjIQyju5LmjYNmx5C
+VhXIs+PloWmvRRghGWm6jtkQeIhlhSIkAVmmBFI2HgPwRIaKofFQ0YAKEOB1Aaiy
+jBChsmpwnrnahMW0mairRZimY0YSmpuyKdfQdWfXJF9OoS8/L9dbM19hwYw/y7d8
+3eTxDCyoOpfIc4u5aG57bnfjpmWhWfRiX/VI45pIf2x+25IzkTmLXriDC/IXHZ/R
+d+Pq4697X/VP3fKkq6cGLg7OD4RGmp1tnU2f4xdA5ZTK3mffm53hscGzFwMD56q3
+lh/PdgQWZg+XHGxeta9laeDQ8PvO9rWju5teHvEf23655Ftr+/T2q2Nvri8lnbGm
+7gVvq55tlozadRWHL4sVBzP1QX+o62tPBa47EtpY6tsztLN6zrxPR19Ped7Brdxd
+1VtaLMwMgJOn7z3d4Wv9cGvDtEs37z8YqDlVZTWuxps6Wm6v2BA/MRTmz7cEK7Pv
+Ss/0f5l77dD0p4/yPl5pjc4eLRq/V5T+CaEGOmw=
+=FPSe
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/aboucaud
+
+==================================================================
