@@ -279,18 +279,6 @@ nav {
   color: var(--muted);
 }
 
-.edu-degree {
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--text);
-}
-
-.edu-school {
-  font-size: 0.6875rem;
-  font-weight: 300;
-  color: var(--muted);
-}
-
 .side-tags {
   display: flex;
   flex-wrap: wrap;
@@ -634,8 +622,6 @@ footer {
 
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 700px) {
-  .palette-ui { padding: 8px 16px; }
-
   nav { padding: 16px 20px; }
   .nav-links { display: none; }
 

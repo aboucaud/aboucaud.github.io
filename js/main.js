@@ -6,15 +6,30 @@
 
   let current = 0;
   let timer;
+  let transitioning = false;
 
   function goTo(n) {
+    if (transitioning) return;
+    transitioning = true;
+    setTimeout(() => { transitioning = false; }, 1000);
+
+    slides[current].style.zIndex = '1';
     slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    dots[current].setAttribute('aria-selected', 'false');
+    if (dots[current]) {
+      dots[current].classList.remove('active');
+      dots[current].setAttribute('aria-selected', 'false');
+    }
+
     current = (n + slides.length) % slides.length;
+
+    slides[current].style.zIndex = '2';
     slides[current].classList.add('active');
-    dots[current].classList.add('active');
-    dots[current].setAttribute('aria-selected', 'true');
+    if (dots[current]) {
+      dots[current].classList.add('active');
+      dots[current].setAttribute('aria-selected', 'true');
+    }
+
+    setTimeout(() => { slides[current].style.zIndex = ''; }, 1000);
   }
 
   function startTimer() { timer = setInterval(() => goTo(current + 1), 5000); }
@@ -26,7 +41,7 @@
 
   const carousel = document.getElementById('carousel');
   carousel.addEventListener('mouseenter', () => clearInterval(timer));
-  carousel.addEventListener('mouseleave', startTimer);
+  carousel.addEventListener('mouseleave', resetTimer);
 
   startTimer();
 }());
