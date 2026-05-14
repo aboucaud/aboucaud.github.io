@@ -72,9 +72,20 @@ body {
   font-weight: 300;
   line-height: 1.7;
   color: var(--muted);
-  background: #e8e6e2;
+  background: #2a1f18;
   -webkit-font-smoothing: antialiased;
 }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('../img/pachon.webp') center / cover no-repeat;
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.palette-ui, .site { position: relative; z-index: 1; }
 
 a {
   color: var(--accent);
