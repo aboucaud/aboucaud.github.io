@@ -241,7 +241,14 @@ nav {
   gap: 24px;
 }
 
-.side-block { display: flex; flex-direction: column; }
+.side-block {
+  display: flex; flex-direction: column;
+  padding-bottom: 9px; margin-bottom: 9px;
+  border-bottom: 0.5px solid var(--border);
+  border-left: 2.5px solid var(--accent-mid);
+  padding-left: 10px; 
+}
+.side-block:last-child { border-bottom: none; }
 
 .side-key {
   font-size: 0.5625rem;
@@ -265,6 +272,51 @@ nav {
 }
 .side-val a:hover { opacity: 0.7; }
 
+/* ── Education timeline ──────────────────────────────────────── */
+.edu { display: flex; flex-direction: column; gap: 8px; }
+
+.edu-row {
+  display: flex; align-items: baseline; gap: 8px;
+  white-space: nowrap;
+}
+
+.edu-year {
+  font-size: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 7px;
+  margin-left: auto;
+}
+
+.edu-degree {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.edu-school {
+  font-size: 0.6875rem;
+  font-weight: 300;
+  color: var(--muted);
+}
+
+.edu-degree {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.edu-school {
+  font-size: 0.6875rem;
+  font-weight: 300;
+  color: var(--muted);
+}
+
 .side-tags {
   display: flex;
   flex-wrap: wrap;
@@ -284,7 +336,7 @@ nav {
 /* ── Carousel ───────────────────────────────────────────────────── */
 .carousel {
   position: relative;
-  height: 280px;
+  height: 340px;
   border-bottom: 0.5px solid var(--border);
   overflow: hidden;
   background: #111;
