@@ -29,36 +29,23 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ── Custom Properties — Bleu ardoise (default) ─────────────────── */
+/* ── Custom Properties — Vert sauge ─────────────────────────────── */
 :root {
-  --accent:     #3a5899;
-  --accent-mid: #7a9cc4;
+  --accent:     #3d6b57;
+  --accent-mid: #8ab09a;
   --bg:         #f4f2ee;
   --bg-card:    #ffffff;
-  --border:     #e0ddd8;
+  --border:     #deded8;
   --text:       #1c1c1c;
   --muted:      #888888;
   --subtle:     #bbbbbb;
-  --ph1:        #d8d4cc;
-  --ph2:        #cdd1db;
-  --ph3:        #d0d4cc;
-  --ph4:        #c8ccd4;
-
-  --f-display: 'Instrument Serif', Georgia, serif;
-  --f-body:    'Space Grotesk', system-ui, sans-serif;
-}
-
-/* ── Vert sauge palette ─────────────────────────────────────────── */
-.sage {
-  --accent:     #3d6b57;
-  --accent-mid: #8ab09a;
-  --bg:         #f3f4f0;
-  --bg-card:    #ffffff;
-  --border:     #deded8;
   --ph1:        #d4d6ce;
   --ph2:        #c0ccc4;
   --ph3:        #d2d6c8;
   --ph4:        #c4ccc8;
+
+  --f-display: 'Instrument Serif', Georgia, serif;
+  --f-body:    'Space Grotesk', system-ui, sans-serif;
 }
 
 /* ── Reset ──────────────────────────────────────────────────────── */
@@ -85,7 +72,7 @@ body::before {
   z-index: 0;
 }
 
-.palette-ui, .site { position: relative; z-index: 1; }
+.site { position: relative; z-index: 1; }
 
 a {
   color: var(--accent);
@@ -93,48 +80,6 @@ a {
   transition: opacity 0.15s;
 }
 a:hover { opacity: 0.7; }
-
-/* ── Palette toggle bar ─────────────────────────────────────────── */
-.palette-ui {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #1c1c1c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 10px 24px;
-}
-
-.palette-ui-label {
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--subtle);
-}
-
-.pal-btn {
-  font-family: var(--f-body);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 3px;
-  border: 0.5px solid #444;
-  background: transparent;
-  color: #888;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.pal-btn.active {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
 
 /* ── Site wrapper ───────────────────────────────────────────────── */
 .site {
