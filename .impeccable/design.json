@@ -238,7 +238,12 @@
       {
         "name": "autoplay-interval",
         "value": "5000ms",
-        "purpose": "Carousel auto-advance cadence; paused on pointer enter, restarted on leave."
+        "purpose": "Carousel auto-advance cadence. Stopped by any of five conditions: pointer inside, focus inside, tab hidden, band scrolled out of view, or prefers-reduced-motion."
+      },
+      {
+        "name": "reduced-motion-path",
+        "value": "cross-fade removed; 0.15s/0.2s feedback retained",
+        "purpose": "Under prefers-reduced-motion the page removes movement, not feedback. Nothing here animates a spatial property, so only the photographic cross-fade and its autoplay are suppressed."
       }
     ],
     "breakpoints": [
@@ -468,11 +473,6 @@
         "section": "typography"
       },
       {
-        "name": "The Stoppable Motion Rule",
-        "body": "Any motion that starts on its own must be stoppable by every input method — pointer, touch, and keyboard focus alike. The carousel pauses on all three. Motion a visitor cannot stop is a failure regardless of how well it is drawn.",
-        "section": "elevation"
-      },
-      {
         "name": "The Eleven-Pixel Floor Rule",
         "body": "Nothing a visitor has to read is set below 11px, ever — not a caption, not a year, not a footer line. The page still reads small and dense, which is the aesthetic; density is achieved with tight spacing and a restrained palette, never by shrinking type past the point where it can be read.",
         "section": "typography"
@@ -491,6 +491,16 @@
         "name": "The Readable Ink Rule",
         "body": "Every ink level clears 4.5:1 against both paper and card — 15.7 / 8.0 / 4.7. The ink ramp is warmed slightly toward the paper rather than left pure grey. A fourth, lighter grey does not get added: if something needs to be quieter than Subtle Ink, it gets smaller, lighter in weight, or moved — not fainter.",
         "section": "colors"
+      },
+      {
+        "name": "The Stoppable Motion Rule",
+        "body": "Any motion that starts on its own must be stoppable by every input method — pointer, touch, and keyboard focus alike — and must stop by itself once nobody can see it, whether the tab is hidden or the band has been scrolled past. Motion a visitor cannot stop is a failure regardless of how well it is drawn; motion running where nobody is looking is waste.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Reduced Motion Is Not No Motion Rule",
+        "body": "Under prefers-reduced-motion the page removes movement, not feedback. The photographic cross-fade and its autoplay go; the 0.15s and 0.2s colour and opacity transitions on hover and focus stay, because they confirm an action rather than move anything. A blanket transition-duration: 0.01ms !important is not an implementation of this rule — it is the failure this rule names.",
+        "section": "elevation"
       }
     ],
     "dos": [

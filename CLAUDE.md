@@ -76,7 +76,8 @@ GitHub Actions (`deploy.yml`) auto-deploys `master` → `gh-pages` on push. Dev 
 
 Deliberate, verified choices — do not undo them casually:
 
-- The carousel pauses on hover, touch, **and keyboard focus** (`focusin`). The focus pause is what satisfies WCAG 2.2.2 Pause, Stop, Hide (Level A) — hover alone leaves keyboard users with no way to stop it.
+- The carousel pauses on hover, touch, **keyboard focus** (`focusin`), a hidden tab, and being scrolled out of view — one `shouldPlay()` predicate, not competing start/stop calls. The focus pause is what satisfies WCAG 2.2.2 Pause, Stop, Hide (Level A); hover alone leaves keyboard users with no way to stop it.
+- `prefers-reduced-motion` removes the cross-fade and autoplay but **keeps** the 0.15s/0.2s hover and focus feedback. Do not replace this with a blanket `transition-duration: 0.01ms !important` — nothing here animates a spatial property, so that would strip meaning without removing movement.
 - Inactive slides carry `aria-hidden="true"` so screen readers read one caption, not thirteen. `goTo()` moves that attribute.
 - Dots are plain buttons with `aria-current` on the active one. They are **not** tabs: `role="tab"` without a `tabpanel` is a broken contract.
 - `.carousel-slides` is `aria-live="off"` and is switched to `polite` only on manual navigation, so autoplay does not announce every five seconds.

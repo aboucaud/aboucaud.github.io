@@ -788,9 +788,19 @@ footer {
   .nav-links a:active { color: var(--accent); }
 }
 
-/* ── Reduced motion ─────────────────────────────────────────────── */
+/* ── Reduced motion ─────────────────────────────────────────────────
+   Reduced motion is not "no motion". Nothing on this page animates a
+   spatial property — no transforms, no keyframes, nothing that slides
+   or travels. What moves is the photographic cross-fade, and what
+   changes is colour and opacity on hover and focus.
+
+   So the cross-fade goes (and JS stops the autoplay with it), while
+   the 0.15s and 0.2s feedback transitions stay: they confirm that a
+   link was hovered or a control focused, and removing them would take
+   away meaning without removing any movement. A blanket
+   `transition-duration: 0.01ms !important` would have done exactly
+   that. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .carousel-slide { transition: none; }
-  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

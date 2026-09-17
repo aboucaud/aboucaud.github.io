@@ -99,38 +99,53 @@
     }, fade);
   }
 
-  /* ── Autoplay ──────────────────────────────────────────────────── */
-  function stopTimer()  { clearInterval(timer); timer = null; }
-  function startTimer() {
-    if (reduceMotion.matches || document.hidden) return;
-    stopTimer();
-    timer = setInterval(() => goTo(current + 1), DELAY_MS);
+  /* ── Autoplay ──────────────────────────────────────────────────
+     Five conditions decide whether the band rotates, and they are
+     tracked as state rather than as competing start/stop calls — so
+     hovering, scrolling away and scrolling back cannot leave the
+     timer running under the pointer. */
+  let inView = true, pointerInside = false, focusInside = false;
+
+  function shouldPlay() {
+    return inView && !pointerInside && !focusInside
+        && !document.hidden && !reduceMotion.matches;
   }
-  function resetTimer() { stopTimer(); startTimer(); }
+  function stopTimer() { clearInterval(timer); timer = null; }
+  function sync() {
+    stopTimer();
+    if (shouldPlay()) timer = setInterval(() => goTo(current + 1), DELAY_MS);
+  }
 
   /* Announce only what the visitor asked for: an unattended slide change
      every five seconds is noise, a deliberate one is the answer to a click. */
   function announce() { if (liveRegion) liveRegion.setAttribute('aria-live', 'polite'); }
 
-  document.querySelector('.carousel-next').addEventListener('click', () => { announce(); goTo(current + 1); resetTimer(); });
-  document.querySelector('.carousel-prev').addEventListener('click', () => { announce(); goTo(current - 1); resetTimer(); });
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { announce(); goTo(i); resetTimer(); }));
+  document.querySelector('.carousel-next').addEventListener('click', () => { announce(); goTo(current + 1); sync(); });
+  document.querySelector('.carousel-prev').addEventListener('click', () => { announce(); goTo(current - 1); sync(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { announce(); goTo(i); sync(); }));
 
-  carousel.addEventListener('mouseenter', stopTimer);
-  carousel.addEventListener('mouseleave', resetTimer);
+  carousel.addEventListener('mouseenter', () => { pointerInside = true;  sync(); });
+  carousel.addEventListener('mouseleave', () => { pointerInside = false; sync(); });
 
   /* WCAG 2.2.2: moving content needs a pause mechanism every input method
      can reach. Hover covers the mouse, touchstart covers touch, and this
      covers the keyboard — tabbing into the carousel stops the rotation. */
-  carousel.addEventListener('focusin', stopTimer);
+  carousel.addEventListener('focusin', () => { focusInside = true; sync(); });
   carousel.addEventListener('focusout', event => {
-    if (!carousel.contains(event.relatedTarget)) resetTimer();
+    if (!carousel.contains(event.relatedTarget)) { focusInside = false; sync(); }
   });
 
   /* A backgrounded tab shouldn't burn through the set. */
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopTimer(); else resetTimer();
-  });
+  document.addEventListener('visibilitychange', sync);
+
+  /* Nor should a band the visitor has already scrolled past: thirteen
+     photographs cross-fading below the fold is work nobody sees. */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      inView = entries[0].isIntersecting;
+      sync();
+    }, { threshold: 0 }).observe(carousel);
+  }
 
   /* ── Swipe ─────────────────────────────────────────────────────
      Touch has no arrows, so the photo itself is the control. */
@@ -155,15 +170,13 @@
     if (Math.abs(dx) > SWIPE_MIN && Math.abs(dx) > Math.abs(dy)) {
       goTo(current + (dx < 0 ? 1 : -1));
     }
-    resetTimer();
+    sync();
   }, { passive: true });
 
-  carousel.addEventListener('touchcancel', () => { tracking = false; resetTimer(); }, { passive: true });
+  carousel.addEventListener('touchcancel', () => { tracking = false; sync(); }, { passive: true });
 
   /* ── Start ─────────────────────────────────────────────────────── */
   loadAround(0);
-  startTimer();
-  if (reduceMotion.addEventListener) {
-    reduceMotion.addEventListener('change', () => reduceMotion.matches ? stopTimer() : startTimer());
-  }
+  sync();
+  if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', sync);
 }());

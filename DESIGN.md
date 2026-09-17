@@ -255,7 +255,9 @@ The one blur in the system is `backdrop-filter: blur(4px)` on the carousel arrow
 
 ### Named Rules
 
-**The Stoppable Motion Rule.** Any motion that starts on its own must be stoppable by every input method — pointer, touch, and keyboard focus alike. The carousel pauses on all three. Motion a visitor cannot stop is a failure regardless of how well it is drawn.
+**The Stoppable Motion Rule.** Any motion that starts on its own must be stoppable by every input method — pointer, touch, and keyboard focus alike — and must stop by itself once nobody can see it, whether the tab is hidden or the band has been scrolled past. Motion a visitor cannot stop is a failure regardless of how well it is drawn; motion running where nobody is looking is waste.
+
+**The Reduced Motion Is Not No Motion Rule.** Under `prefers-reduced-motion` the page removes *movement*, not *feedback*. The photographic cross-fade and its autoplay go; the `0.15s` and `0.2s` colour and opacity transitions on hover and focus stay, because they confirm an action rather than move anything. A blanket `transition-duration: 0.01ms !important` is not an implementation of this rule — it is the failure this rule names. Nothing in this system animates a spatial property, so there is nothing else to suppress.
 
 **The Flat-Except-the-Sheet Rule.** Nothing casts a shadow except the page sheet itself — not at rest, not on hover, not on focus. If an element needs to separate from its neighbor, give it a 0.5px hairline or move it to the other paper tone.
 
@@ -313,7 +315,7 @@ A single bordered container at `4px` radius with `overflow: hidden`, holding equ
 The one place the system is loud, and the component the whole page is built around.
 
 - **Frame:** Full sheet width, `340px` / `220px` tall, Photo Ground base, 0.5px bottom border.
-- **Slides:** Absolutely stacked, cross-faded on `opacity 1.0s ease` with a z-index swap during the transition so the outgoing slide never flashes above the incoming one. Auto-advances every `5000ms`, pausing on hover, on touch, on a hidden tab, and entirely under `prefers-reduced-motion`.
+- **Slides:** Absolutely stacked, cross-faded on `opacity 1.0s ease` with a z-index swap during the transition so the outgoing slide never flashes above the incoming one. Auto-advances every `5000ms`. Five conditions stop it — pointer inside, focus inside, tab hidden, band scrolled out of view, or `prefers-reduced-motion` — evaluated as one predicate rather than competing start/stop calls, so no combination can leave a timer running unattended.
 - **Loading:** Slides carry `data-bg` rather than a background image; only the current slide and its two neighbours are fetched, and viewports at or below `700px` are served the `img/small/` copies. The first slide keeps a small inline background so the band still renders without JS.
 - **Scrim:** Every slide carries a bottom-up gradient (`var(--scrim)` → `rgba(0,0,0,0.18)` at 40% → transparent at 70%). Sized by measurement: against a fully white photograph the caption still reads at 7:1.
 - **Caption:** Bottom-left, Small (`0.75rem`) in sentence case in opaque `#ffffff`, no text-shadow — the scrim does that job. Opaque rather than translucent, because alpha would make the contrast depend on whichever photograph sits behind it. Captions carry photo credits and are content, not decoration, so they are set to be read rather than to look like labels.
