@@ -508,6 +508,11 @@
         "name": "The Reduced Motion Is Not No Motion Rule",
         "body": "Under prefers-reduced-motion the page removes movement, not feedback. The photographic cross-fade and its autoplay go; the 0.15s and 0.2s colour and opacity transitions on hover and focus stay, because they confirm an action rather than move anything. A blanket transition-duration: 0.01ms !important is not an implementation of this rule — it is the failure this rule names.",
         "section": "elevation"
+      },
+      {
+        "name": "The Landmark Rule",
+        "body": "Every region of the page belongs to a landmark with a name. <main> holds everything between the nav and the footer; each <section> carries aria-labelledby pointing at its own heading. A <section> without an accessible name is not a landmark at all — it is a <div> that looks semantic in the source and does nothing for the person navigating by region.",
+        "section": "layout"
       }
     ],
     "dos": [

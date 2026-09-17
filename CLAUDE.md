@@ -86,6 +86,7 @@ Deliberate, verified choices — do not undo them casually:
 - Dots are plain buttons with `aria-current` on the active one. They are **not** tabs: `role="tab"` without a `tabpanel` is a broken contract.
 - `.carousel-slides` is `aria-live="off"` and is switched to `polite` only on manual navigation, so autoplay does not announce every five seconds.
 - Content is in the markup, not rendered by JS, so the page survives with scripting disabled.
+- `<main id="main">` wraps everything between nav and footer, every `<section>` is named via `aria-labelledby`, and a skip link is the first focusable element. Do not add a `<section>` without an accessible name — unnamed sections are not landmarks.
 
 ## Carousel maintenance
 

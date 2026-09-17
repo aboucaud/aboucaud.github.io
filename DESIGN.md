@@ -239,6 +239,8 @@ Four smaller queries refine that: `380px` tightens the nav for narrow phones; `(
 
 ### Named Rules
 
+**The Landmark Rule.** Every region of the page belongs to a landmark with a name. `<main>` holds everything between the nav and the footer; each `<section>` carries `aria-labelledby` pointing at its own heading. A `<section>` without an accessible name is not a landmark at all — it is a `<div>` that looks semantic in the source and does nothing for the person navigating by region.
+
 **The Bounded Sheet Rule.** Content is capped at 960px and the page is always a finite object on a ground, never an edge-to-edge website. Any new section lives inside the sheet.
 
 **The Hairline Rule.** Every structural division in the system is a 0.5px line in Hairline — section borders, card seams, sidebar dividers, table rows. Not 1px, not a shadow, not a color change alone.
@@ -276,6 +278,10 @@ Borders are `0.5px` everywhere except one: the `2.5px` Sage Mid left rule that m
 ## Components
 
 This site has no general-purpose button. The only true buttons are the carousel controls; everything else interactive is a link.
+
+### Skip Link
+
+First focusable element on the page, offset above the viewport until focused, then landing in the gutter at `20px` — clear of the centred nav rather than on top of it. Card background, accent text, Label typography, and a `4px` bottom radius so it reads as something that dropped down from the edge. No transition: it appears the instant it is focused.
 
 ### Navigation
 
