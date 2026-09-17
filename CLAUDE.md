@@ -49,6 +49,7 @@ Typography:
 
 Color palette — Vert sauge is the only implemented palette, set directly in `:root`:
 - Vert sauge:   accent #3d6b57, mid #8ab09a, bg #f4f2ee, card #ffffff, border #deded8
+- Ink ramp:     text #1b1917, muted #4d4944, subtle #6f6b64 — all three clear 4.5:1 on both surfaces; don't add a fourth, lighter grey
 - Bleu ardoise: accent #3a5899, mid #7a9cc4, bg #f4f2ee, card #ffffff, border #e0ddd8 — **not implemented**, kept as a reference comment at the top of `css/resume.css`
 
 Layout principles:

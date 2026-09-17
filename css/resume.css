@@ -61,9 +61,21 @@
   --bg:         #f4f2ee;
   --bg-card:    #ffffff;
   --border:     #deded8;
-  --text:       #1c1c1c;
-  --muted:      #5c5c5c;
-  --subtle:     #888888;
+  /* Ink ramp — three levels, each passing 4.5:1 on both paper and
+     card, warmed very slightly toward the paper so the text does not
+     read cold against it. Measured, not eyeballed:
+       text   15.7:1 / 17.5:1
+       muted   8.0:1 /  8.9:1
+       subtle  4.7:1 /  5.3:1  */
+  --text:       #1b1917;
+  --muted:      #4d4944;
+  --subtle:     #6f6b64;
+  /* The photographic layer. DESIGN.md named these as tokens before
+     they existed; they exist now. */
+  --backdrop:     #2a1f18;
+  --photo-ground: #111111;
+  --scrim:        rgba(0, 0, 0, 0.65);
+
   --f-display: 'IBM Plex Serif', 'Plex Fallback', Georgia, serif;
   --f-body:    'Space Grotesk', 'Grotesk Fallback', system-ui, sans-serif;
 
@@ -94,7 +106,7 @@ body {
   font-weight: 300;
   line-height: 1.65;
   color: var(--muted);
-  background: #2a1f18;
+  background: var(--backdrop);
   -webkit-font-smoothing: antialiased;
   overflow-wrap: break-word;
   /* keep the sheet clear of notches and rounded corners in landscape */
@@ -337,7 +349,7 @@ nav {
   height: 340px;
   border-bottom: 0.5px solid var(--border);
   overflow: hidden;
-  background: #111;
+  background: var(--photo-ground);
 }
 
 .carousel-slides {
@@ -348,7 +360,7 @@ nav {
 .carousel-slide {
   position: absolute;
   inset: 0;
-  background: center / cover no-repeat #111;
+  background: center / cover no-repeat var(--photo-ground);
   opacity: 0;
   transition: opacity 1.0s ease;
   display: flex;
@@ -360,7 +372,7 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 40%, transparent 70%);
+  background: linear-gradient(to top, var(--scrim) 0%, rgba(0, 0, 0, 0.18) 40%, transparent 70%);
   pointer-events: none;
 }
 
@@ -373,7 +385,9 @@ nav {
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.92);
+  /* Opaque rather than translucent: alpha would make the contrast
+     depend on whichever photograph is behind it. */
+  color: #ffffff;
   text-shadow: none;
 }
 
@@ -529,7 +543,7 @@ nav {
   text-transform: uppercase;
   color: var(--accent);
   padding-bottom: 2px;
-  border-bottom: 0.5px solid var(--accent-mid);
+  border-bottom: 0.5px solid var(--accent);
   opacity: 1;
   transition: opacity 0.15s;
 }

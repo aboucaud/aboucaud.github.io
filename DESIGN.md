@@ -7,11 +7,12 @@ colors:
   paper: "#f4f2ee"
   card: "#ffffff"
   hairline: "#deded8"
-  ink: "#1c1c1c"
-  muted-ink: "#5c5c5c"
-  subtle-ink: "#888888"
+  ink: "#1b1917"
+  muted-ink: "#4d4944"
+  subtle-ink: "#6f6b64"
   backdrop-umber: "#2a1f18"
   photo-ground: "#111111"
+  scrim: "rgba(0, 0, 0, 0.65)"
 typography:
   display:
     fontFamily: "IBM Plex Serif, Plex Fallback, Georgia, serif"
@@ -152,25 +153,28 @@ A muted, warm-neutral palette: two paper tones, a four-step grey ink scale, and 
 ### Primary
 
 - **Observatory Sage** (`#3d6b57`): The only chromatic color in the system. It marks every link, the role line under the name, the education years, the 2px bar across the very top of the page, and emphasized names inside the bio. It is never a background fill and never sits behind text.
-- **Sage Mid** (`#8ab09a`): The accent at half strength, used exclusively for structural marks that shouldn't read as links — the 2.5px left rule on each sidebar block, and the underline beneath project links.
+- **Sage Mid** (`#8ab09a`): The accent at half strength, used exclusively for the decorative 2.5px left rule on each sidebar block. At 2.1:1 it is deliberately soft: it is ornament, never an affordance, and nothing depends on seeing it. Anything a visitor must act on uses full-strength Observatory Sage.
 
 ### Neutral
 
 - **Paper** (`#f4f2ee`): The recessed surface. The page sheet itself, the hero sidebar, the education-year chips, and contact rows at rest.
 - **Card** (`#ffffff`): The raised surface. Nav, hero bio panel, alternating sections, project cards, specialty tags, and contact rows on hover.
 - **Hairline** (`#deded8`): Every border, every rule, every divider in the system. Also the grid background that shows through as 1px seams between project cards.
-- **Ink** (`#1c1c1c`): Headings, names, and any value the visitor is meant to actually read as content.
-- **Muted Ink** (`#5c5c5c`): Body copy, descriptions, and nav links at rest. The default text color on `body`.
-- **Subtle Ink** (`#888888`): Micro-labels, years, venues, co-supervisor notes, footer. Everything that is context rather than content.
+- **Ink** (`#1b1917`): Headings, names, and any value the visitor is meant to actually read as content. 15.7:1 on paper.
+- **Muted Ink** (`#4d4944`): Body copy, descriptions, and nav links at rest. The default text color on `body`. 8.0:1 on paper.
+- **Subtle Ink** (`#6f6b64`): Micro-labels, years, venues, co-supervisor notes, footer. Everything that is context rather than content. 4.7:1 on paper — the quietest the system goes.
 
 ### Tertiary
 
 - **Backdrop Umber** (`#2a1f18`): The dark ground behind the sheet, visible as margin on wide screens.
 - **Photo Ground** (`#111111`): The carousel's base color, seen only while an image loads.
+- **Scrim** (`rgba(0, 0, 0, 0.65)`): The bottom of the gradient over every photograph. Deep enough that an opaque white caption clears 4.5:1 even over a white image.
 
 ### Named Rules
 
 **The One Accent Rule.** Observatory Sage is the system's only chromatic color, and it appears only on things that are links, tags, or live actions. It never fills a surface, never backs a block of text, and never gets a companion accent. Its scarcity is what makes it legible.
+
+**The Readable Ink Rule.** Every ink level clears 4.5:1 against both paper and card — `15.7 / 8.0 / 4.7`. The ink ramp is warmed slightly toward the paper rather than left pure grey, so text does not read cold against a warm sheet. A fourth, lighter grey does not get added: if something needs to be quieter than Subtle Ink, it gets smaller, lighter in weight, or moved — not fainter. Colour is never the only thing separating two levels; size, weight, case, and tracking already do that work.
 
 **The Two Paper Rule.** Only two surfaces exist: Paper (recessed) and Card (raised). Sections separate by alternating between them — never by tinting, never by adding a third tone. If a new surface seems necessary, the layout is wrong.
 
@@ -282,7 +286,7 @@ This site has no general-purpose button. The only true buttons are the carousel 
 
 - **Default:** Observatory Sage, no underline, `opacity 0.15s` transition; hover drops to `0.7` opacity.
 - **In body copy:** Muted Ink with a 0.5px Subtle Ink underline; on hover both text and underline become Observatory Sage. This is the only underlined link style in the system.
-- **Project links:** Label typography in Observatory Sage over a 0.5px Sage Mid underline, `2px` of padding beneath the text.
+- **Project links:** Label typography in Observatory Sage over a 0.5px underline in the same Observatory Sage, `2px` of padding beneath the text. The underline matches the text rather than sitting at half strength — outbound links are a stated product goal, so their affordance is not the faintest mark on the page.
 
 ### Cards / Containers
 
@@ -311,8 +315,8 @@ The one place the system is loud, and the component the whole page is built arou
 - **Frame:** Full sheet width, `340px` / `220px` tall, Photo Ground base, 0.5px bottom border.
 - **Slides:** Absolutely stacked, cross-faded on `opacity 1.0s ease` with a z-index swap during the transition so the outgoing slide never flashes above the incoming one. Auto-advances every `5000ms`, pausing on hover, on touch, on a hidden tab, and entirely under `prefers-reduced-motion`.
 - **Loading:** Slides carry `data-bg` rather than a background image; only the current slide and its two neighbours are fetched, and viewports at or below `700px` are served the `img/small/` copies. The first slide keeps a small inline background so the band still renders without JS.
-- **Scrim:** Every slide carries a bottom-up gradient (`rgba(0,0,0,0.55)` → `rgba(0,0,0,0.15)` at 40% → transparent at 70%) so captions stay legible over any image.
-- **Caption:** Bottom-left, Small (`0.75rem`) in sentence case at `rgba(255,255,255,0.92)`, no text-shadow — the scrim does that job. Captions carry photo credits and are content, not decoration, so they are set to be read rather than to look like labels.
+- **Scrim:** Every slide carries a bottom-up gradient (`var(--scrim)` → `rgba(0,0,0,0.18)` at 40% → transparent at 70%). Sized by measurement: against a fully white photograph the caption still reads at 7:1.
+- **Caption:** Bottom-left, Small (`0.75rem`) in sentence case in opaque `#ffffff`, no text-shadow — the scrim does that job. Opaque rather than translucent, because alpha would make the contrast depend on whichever photograph sits behind it. Captions carry photo credits and are content, not decoration, so they are set to be read rather than to look like labels.
 - **Controls:** `36px` circles (`44px` on coarse pointers) at `rgba(0,0,0,0.25)` with a 0.5px `rgba(255,255,255,0.3)` border and `blur(4px)` backdrop; hover deepens to `0.5` and brightens the border. Hidden below 700px.
 - **Accessibility:** the band is a `<section>` carrying `aria-roledescription="carousel"`; each slide is a labelled group and inactive ones are `aria-hidden`; dots are plain buttons with `aria-current`, never tabs; the slide container is `aria-live="off"` until the visitor navigates by hand.
 - **Dots:** A `5px` circle at `rgba(255,255,255,0.35)`, active at `0.9`, drawn as a pseudo-element centred inside a `16x34` transparent button — the mark stays small, the tap target does not.
