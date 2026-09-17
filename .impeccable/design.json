@@ -1,0 +1,532 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-17T00:00:00Z",
+  "title": "Design System: Alexandre Boucaud — Personal Site",
+  "extensions": {
+    "colorMeta": {
+      "observatory-sage": {
+        "role": "primary",
+        "displayName": "Observatory Sage",
+        "canonical": "#3d6b57",
+        "cssVar": "--accent",
+        "tonalRamp": [
+          "oklch(15% 0.055 158)",
+          "oklch(25% 0.055 158)",
+          "oklch(35% 0.058 158)",
+          "oklch(45% 0.060 158)",
+          "oklch(55% 0.058 158)",
+          "oklch(70% 0.050 158)",
+          "oklch(85% 0.032 158)",
+          "oklch(95% 0.014 158)"
+        ]
+      },
+      "sage-mid": {
+        "role": "primary",
+        "displayName": "Sage Mid",
+        "canonical": "#8ab09a",
+        "cssVar": "--accent-mid",
+        "tonalRamp": [
+          "oklch(15% 0.045 155)",
+          "oklch(25% 0.045 155)",
+          "oklch(35% 0.045 155)",
+          "oklch(45% 0.045 155)",
+          "oklch(55% 0.045 155)",
+          "oklch(70% 0.045 155)",
+          "oklch(85% 0.028 155)",
+          "oklch(95% 0.012 155)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#f4f2ee",
+        "cssVar": "--bg",
+        "tonalRamp": [
+          "oklch(15% 0.005 85)",
+          "oklch(25% 0.005 85)",
+          "oklch(35% 0.005 85)",
+          "oklch(45% 0.005 85)",
+          "oklch(55% 0.005 85)",
+          "oklch(70% 0.005 85)",
+          "oklch(85% 0.005 85)",
+          "oklch(96% 0.005 85)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card",
+        "canonical": "#ffffff",
+        "cssVar": "--bg-card",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(100% 0 0)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#deded8",
+        "cssVar": "--border",
+        "tonalRamp": [
+          "oklch(15% 0.008 110)",
+          "oklch(25% 0.008 110)",
+          "oklch(35% 0.008 110)",
+          "oklch(45% 0.008 110)",
+          "oklch(55% 0.008 110)",
+          "oklch(70% 0.008 110)",
+          "oklch(89% 0.008 110)",
+          "oklch(95% 0.006 110)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1b1917",
+        "cssVar": "--text",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(22% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#4d4944",
+        "cssVar": "--muted",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(47% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "subtle-ink": {
+        "role": "neutral",
+        "displayName": "Subtle Ink",
+        "canonical": "#6f6b64",
+        "cssVar": "--subtle",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(62% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "backdrop-umber": {
+        "role": "tertiary",
+        "displayName": "Backdrop Umber",
+        "canonical": "#2a1f18",
+        "cssVar": "--backdrop",
+        "tonalRamp": [
+          "oklch(15% 0.018 55)",
+          "oklch(24% 0.018 55)",
+          "oklch(35% 0.020 55)",
+          "oklch(45% 0.022 55)",
+          "oklch(55% 0.022 55)",
+          "oklch(70% 0.018 55)",
+          "oklch(85% 0.012 55)",
+          "oklch(95% 0.005 55)"
+        ]
+      },
+      "photo-ground": {
+        "role": "tertiary",
+        "displayName": "Photo Ground",
+        "canonical": "#111111",
+        "cssVar": "--photo-ground",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(70% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "scrim": {
+        "role": "tertiary",
+        "displayName": "Scrim",
+        "canonical": "rgba(0, 0, 0, 0.65)",
+        "cssVar": "--scrim",
+        "tonalRamp": []
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name in the hero, and nothing else. IBM Plex Serif 400, roman only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles and the contact tagline."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project names in the grotesque; nav links at the same size in the serif."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "The hero bio, at a 57-character measure — the only text with a hard measure."
+      },
+      "supporting": {
+        "displayName": "Supporting",
+        "purpose": "Project descriptions, talk titles, sidebar values, degrees."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Years, venues, schools, contact values, footer, photo captions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Every uppercase micro-label, at one size and one tracking (0.18em)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "page-lift",
+        "value": "0 0 80px rgba(0, 0, 0, 0.15)",
+        "purpose": "The 960px sheet against its dark ground. The only shadow in the system — never reuse this value elsewhere."
+      }
+    ],
+    "motion": [
+      {
+        "name": "link-fade",
+        "value": "opacity 0.15s",
+        "purpose": "Global link hover — drops to 0.7 opacity."
+      },
+      {
+        "name": "color-shift",
+        "value": "color 0.15s",
+        "purpose": "Nav links and body links shifting to Observatory Sage on hover."
+      },
+      {
+        "name": "surface-shift",
+        "value": "background 0.15s",
+        "purpose": "Contact rows lifting from Paper to Card on hover."
+      },
+      {
+        "name": "control-shift",
+        "value": "background 0.2s, border-color 0.2s",
+        "purpose": "Carousel arrows and dots responding to hover."
+      },
+      {
+        "name": "slide-crossfade",
+        "value": "opacity 1.0s ease",
+        "purpose": "The carousel cross-fade — the only slow motion in the system."
+      },
+      {
+        "name": "autoplay-interval",
+        "value": "5000ms",
+        "purpose": "Carousel auto-advance cadence. Stopped by any of five conditions: pointer inside, focus inside, tab hidden, band scrolled out of view, or prefers-reduced-motion."
+      },
+      {
+        "name": "reduced-motion-path",
+        "value": "cross-fade removed; 0.15s/0.2s feedback retained",
+        "purpose": "Under prefers-reduced-motion the page removes movement, not feedback. Nothing here animates a spatial property, so only the photographic cross-fade and its autoplay are suppressed."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "700px",
+        "purpose": "The structural breakpoint: hero, projects, talks, contact and nav all reflow."
+      },
+      {
+        "name": "narrow",
+        "value": "380px",
+        "purpose": "Tightens the nav for the smallest phones."
+      },
+      {
+        "name": "short-landscape",
+        "value": "(max-height: 500px) and (orientation: landscape)",
+        "purpose": "Cuts vertical padding and the photo band so short viewports show content, not margin."
+      },
+      {
+        "name": "coarse-pointer",
+        "value": "(pointer: coarse)",
+        "purpose": "Takes the carousel arrows to 44px."
+      },
+      {
+        "name": "no-hover",
+        "value": "(hover: none)",
+        "purpose": "Supplies :active feedback where hover can never fire."
+      }
+    ],
+    "layout": [
+      {
+        "name": "sheet-max",
+        "value": "960px",
+        "purpose": "Hard cap on the page sheet. Nothing breaks out of it."
+      },
+      {
+        "name": "hero-grid",
+        "value": "1.55fr 1fr",
+        "purpose": "Bio panel / metadata sidebar; collapses to one column below 700px."
+      },
+      {
+        "name": "projects-grid",
+        "value": "1fr 1fr / gap 1px on --border",
+        "purpose": "The gap is the divider; cards carry no border of their own."
+      },
+      {
+        "name": "talk-grid",
+        "value": "72px 1fr auto",
+        "purpose": "Year / title / venue, baseline-aligned. Becomes 48px 1fr below 700px with the venue hidden."
+      },
+      {
+        "name": "bio-measure",
+        "value": "420px",
+        "purpose": "The only hard measure in the system."
+      },
+      {
+        "name": "carousel-height",
+        "value": "340px / 220px / 200px",
+        "purpose": "Desktop / below 700px / short landscape viewports."
+      }
+    ],
+    "fontFallbacks": [
+      {
+        "webfont": "IBM Plex Serif",
+        "fallback": "Georgia",
+        "sizeAdjust": "93.7%",
+        "purpose": "Measured at 100px; keeps the swap from reflowing the page."
+      },
+      {
+        "webfont": "Space Grotesk",
+        "fallback": "Arial",
+        "sizeAdjust": "104.6%",
+        "purpose": "Measured at 100px; keeps the swap from reflowing the page."
+      }
+    ],
+    "alternateFaces": [
+      {
+        "role": "display",
+        "family": "Spectral 400",
+        "size": "13.7 KB",
+        "license": "OFL",
+        "note": "Vetted alternative to IBM Plex Serif — sharper and more elegant, closer to the previous DM Serif Display. Swap the @font-face src and family name; nothing else changes."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The signature page divider: serif title, a hairline that fills the remaining width, and a right-aligned uppercase meta label.",
+      "html": "<header class=\"ds-section-header\"><h2 class=\"ds-section-title\">Projects &amp; Experiments</h2><div class=\"ds-section-rule\" aria-hidden=\"true\"></div><span class=\"ds-section-meta\">Selected work</span></header>",
+      "css": ".ds-section-header { display: flex; align-items: baseline; gap: 16px; } .ds-section-title { font-family: var(--f-display, 'DM Serif Display', Georgia, serif); font-size: clamp(1.5rem, 3.5vw, 1.875rem); font-weight: 400; color: var(--text, #1c1c1c); white-space: nowrap; margin: 0; } .ds-section-rule { flex: 1; height: 0.5px; background: var(--border, #deded8); } .ds-section-meta { font-family: var(--f-body, 'Space Grotesk', system-ui, sans-serif); font-size: 0.625rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle, #888888); white-space: nowrap; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "Square white block in the 1px-seam grid: the name leads, then description, then a row of underlined links. No label above the heading.",
+      "html": "<article class=\"ds-project-card\"><h3 class=\"ds-project-name\">LSST / Rubin Observatory</h3><p class=\"ds-project-desc\">Camera control software and commissioning for the Legacy Survey of Space and Time at Vera C. Rubin Observatory.</p><div class=\"ds-project-links\"><a class=\"ds-project-link\" href=\"#\">Website</a><a class=\"ds-project-link\" href=\"#\">Observatory tour</a></div></article>",
+      "css": ".ds-project-card { background: var(--bg-card, #ffffff); padding: 28px; border-radius: 0; font-family: var(--f-body, 'Space Grotesk', system-ui, sans-serif); } .ds-project-name { font-size: 1rem; font-weight: 500; color: var(--text, #1c1c1c); line-height: 1.3; margin: 0 0 10px; } .ds-project-desc { font-size: 0.78125rem; font-weight: 300; line-height: 1.75; color: var(--muted, #5c5c5c); margin: 0; } .ds-project-links { display: flex; gap: 12px; margin-top: 16px; } .ds-project-link { font-size: 0.625rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent, #3d6b57); text-decoration: none; padding-bottom: 2px; border-bottom: 0.5px solid var(--accent-mid, #8ab09a); transition: opacity 0.15s; } .ds-project-link:hover { opacity: 0.7; } .ds-project-link:focus-visible { outline: 2px solid var(--accent, #3d6b57); outline-offset: 2px; }"
+    },
+    {
+      "name": "Sidebar Metadata Block",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The hero sidebar's repeating unit: a 2.5px sage left rule, an uppercase micro-key, and its value. The densest pattern in the system.",
+      "html": "<div class=\"ds-side-block\"><p class=\"ds-side-key\">Experiments</p><p class=\"ds-side-val\"><a href=\"#\">Vera Rubin Observatory</a> / <a href=\"#\">LSST</a> · <a href=\"#\">Euclid</a></p></div>",
+      "css": ".ds-side-block { display: flex; flex-direction: column; padding-bottom: 9px; margin-bottom: 9px; border-bottom: 0.5px solid var(--border, #deded8); border-left: 2.5px solid var(--accent-mid, #8ab09a); padding-left: 10px; font-family: var(--f-body, 'Space Grotesk', system-ui, sans-serif); } .ds-side-key { font-size: 0.5625rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--subtle, #888888); margin: 0 0 6px; } .ds-side-val { font-size: 0.8125rem; font-weight: 400; color: var(--text, #1c1c1c); line-height: 1.5; margin: 0; } .ds-side-val a { color: var(--accent, #3d6b57); text-decoration: none; transition: opacity 0.15s; } .ds-side-val a:hover { opacity: 0.7; } .ds-side-val a:focus-visible { outline: 2px solid var(--accent, #3d6b57); outline-offset: 2px; }"
+    },
+    {
+      "name": "Specialty Chip",
+      "kind": "chip",
+      "refersTo": "side-tag",
+      "description": "Static descriptor tag. Not interactive, not filterable — a 3px-radius hairline outline on Card.",
+      "html": "<div class=\"ds-tags\"><span class=\"ds-tag\">Deep learning</span><span class=\"ds-tag\">Cosmology</span><span class=\"ds-tag\">Agentic AI</span></div>",
+      "css": ".ds-tags { display: flex; flex-wrap: wrap; gap: 5px; font-family: var(--f-body, 'Space Grotesk', system-ui, sans-serif); } .ds-tag { font-size: 0.625rem; font-weight: 300; padding: 3px 9px; border: 0.5px solid var(--border, #deded8); border-radius: 3px; color: var(--muted, #5c5c5c); background: var(--bg-card, #ffffff); }"
+    },
+    {
+      "name": "Education Row",
+      "kind": "custom",
+      "refersTo": "edu-year",
+      "description": "Baseline row with the year pushed right as an accent chip on Paper — the system's only right-aligned chip.",
+      "html": "<div class=\"ds-edu-row\"><span class=\"ds-edu-degree\">PhD Astrophysics</span><span class=\"ds-edu-school\">U. Paris Diderot</span><span class=\"ds-edu-year\">2013</span></div>",
+      "css": ".ds-edu-row { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; font-family: var(--f-body, 'Space Grotesk', system-ui, sans-serif); } .ds-edu-degree { font-size: 0.75rem; font-weight: 400; color: var(--text, #1c1c1c); } .ds-edu-school { font-size: 0.6875rem; font-weight: 300; color: var(--muted, #5c5c5c); } .ds-edu-year { font-size: 0.5rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent, #3d6b57); background: var(--bg, #f4f2ee); border: 0.5px solid var(--border, #deded8); border-radius: 3px; padding: 2px 7px; margin-left: auto; }"
+    },
+    {
+      "name": "Contact Link Row",
+      "kind": "nav",
+      "refersTo": "contact-link-row",
+      "description": "Equal-width rows inside a 4px-radius bordered panel; each lifts from Paper to Card on hover. Stacks and flips horizontal below 700px.",
+      "html": "<div class=\"ds-contact-links\"><a class=\"ds-contact-row\" href=\"#\"><span class=\"ds-contact-label\">Email</span><span class=\"ds-contact-url\">aboucaud@apc.in2p3.fr</span></a><a class=\"ds-contact-row\" href=\"#\"><span class=\"ds-contact-label\">GitHub</span><span class=\"ds-contact-url\">github.com/aboucaud</span></a></div>",
+      "css": ".ds-contact-links { display: flex; width: 100%; border: 0.5px solid var(--border, #deded8); border-radius: 4px; overflow: hidden; font-family: var(--f-body, 'Space Grotesk', system-ui, sans-serif); } .ds-contact-row { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 12px; border-right: 0.5px solid var(--border, #deded8); background: var(--bg, #f4f2ee); text-decoration: none; transition: background 0.15s; } .ds-contact-row:last-child { border-right: none; } .ds-contact-row:hover { background: var(--bg-card, #ffffff); } .ds-contact-row:focus-visible { outline: 2px solid var(--accent, #3d6b57); outline-offset: -2px; } .ds-contact-label { font-size: 0.5rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--subtle, #888888); } .ds-contact-url { font-size: 0.6875rem; color: var(--accent, #3d6b57); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Centered serif link row on Card with a hairline underside. Opts out of the global opacity fade in favor of a color shift.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Site navigation\"><ul class=\"ds-nav-links\"><li><a href=\"#\">Projects</a></li><li><a href=\"#\">Teaching</a></li><li><a href=\"#\">Contact</a></li></ul></nav>",
+      "css": ".ds-nav { display: flex; justify-content: center; align-items: center; padding: 22px 40px; background: var(--bg-card, #ffffff); border-bottom: 0.5px solid var(--border, #deded8); } .ds-nav-links { display: flex; gap: 52px; list-style: none; margin: 0; padding: 0; } .ds-nav-links a { font-family: var(--f-display, 'DM Serif Display', Georgia, serif); font-size: 1.15rem; font-weight: 400; color: var(--muted, #5c5c5c); letter-spacing: 0.01em; text-decoration: none; transition: color 0.15s; } .ds-nav-links a:hover { color: var(--accent, #3d6b57); } .ds-nav-links a:focus-visible { outline: 2px solid var(--accent, #3d6b57); outline-offset: 4px; }"
+    },
+    {
+      "name": "Carousel Controls",
+      "kind": "button",
+      "refersTo": "carousel-btn",
+      "description": "The only true buttons in the system: blurred translucent circles over photography, plus the dot row — a 5px mark centred in a 16x34 tap target. Arrows are hidden below 700px, where swipe takes over. Dots are plain buttons with aria-current, never tabs.",
+      "html": "<div class=\"ds-carousel-demo\"><button class=\"ds-carousel-btn\" aria-label=\"Previous photo\">&#8249;</button><button class=\"ds-carousel-btn\" aria-label=\"Next photo\">&#8250;</button><div class=\"ds-dots\"><button class=\"ds-dot ds-dot-active\" aria-label=\"Photo 1\"></button><button class=\"ds-dot\" aria-label=\"Photo 2\"></button><button class=\"ds-dot\" aria-label=\"Photo 3\"></button></div></div>",
+      "css": ".ds-carousel-demo { display: flex; align-items: center; gap: 16px; padding: 24px; background: #2a2a28; } .ds-carousel-btn { width: 36px; height: 36px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.25); color: rgba(255,255,255,0.85); font-size: 1.25rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); transition: background 0.2s, border-color 0.2s; } .ds-carousel-btn:hover { background: rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.6); } .ds-carousel-btn:focus-visible { outline: 2px solid rgba(255,255,255,0.9); outline-offset: 2px; } @media (pointer: coarse) { .ds-carousel-btn { width: 44px; height: 44px; } } .ds-dots { display: flex; gap: 0; margin-left: auto; } .ds-dot { width: 16px; height: 34px; border: none; background: none; padding: 0; cursor: pointer; display: grid; place-items: center; } .ds-dot::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.35); transition: background 0.2s; } .ds-dot:hover::before, .ds-dot-active::before { background: rgba(255,255,255,0.9); } .ds-dot:focus-visible { outline: 1px solid rgba(255,255,255,0.9); outline-offset: -6px; }"
+    },
+    {
+      "name": "Photo Slide",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The signature band: a full-width photograph under a bottom-up scrim with an uppercase-free caption carrying the credit. Images load on demand — visible slide immediately, neighbours at idle.",
+      "html": "<div class=\"ds-slide\"><span class=\"ds-slide-caption\">Rubin Observatory at twilight · Cerro Pachón, Chile</span></div>",
+      "css": ".ds-slide { position: relative; height: 180px; background: linear-gradient(135deg, #2a3340, #55606b) center / cover no-repeat, #111; display: flex; align-items: flex-end; padding: 14px 20px; overflow: hidden; } .ds-slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 40%, transparent 70%); pointer-events: none; } .ds-slide-caption { position: relative; z-index: 1; font-family: var(--f-body, 'Space Grotesk', system-ui, sans-serif); font-size: 0.5625rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.85); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "An Engineer's Homepage",
+    "overview": "This is the homepage of someone who builds things that have to work. Everything on the page is a fact — an institution, a date, an experiment, a student, a photograph taken on a mountain — and the design's whole job is to present those facts at maximum density without ever raising its voice. Credibility comes from precision: hairline rules that actually align, a single accent used sparingly enough that it still means something, metadata set small and confidently rather than padded out to look important. Nothing here persuades. It states, accurately, and gets out of the way.\n\nThe structure is a bounded cream sheet, never wider than 960px, sitting on a dark ground. Inside it, two paper tones alternate to separate sections, and every division is drawn with a 0.5px line rather than a shadow or a gap. Density is deliberately high — the hero sidebar packs six labelled blocks into a column narrower than the bio beside it — but line-height stays generous (1.7–1.85) so the page reads calm rather than cramped. Thirteen first-hand photographs from the Vera C. Rubin Observatory sit in a full-width band at the page's midpoint; they are the one place the system stops being quiet.\n\nOne direction is deliberately unsettled. The display face is currently DM Serif Display, which pulls the page toward academic paper rather than engineer's homepage. That serif is recorded as the current implementation, not as a settled decision — it is the one token a future pass is expected to revisit. Everything else in this file is the standard.",
+    "keyCharacteristics": [
+      "A bounded 960px sheet on a dark ground — never full-bleed",
+      "Two paper tones (#f4f2ee recessed, #ffffff raised) doing all the sectioning",
+      "0.5px hairline rules as the only structural device",
+      "Completely flat: one shadow exists in the entire system",
+      "One accent, used only on links, tags, and live actions",
+      "Tiny wide-tracked uppercase labels as the connective tissue",
+      "Square corners by default; radius is the exception, never the rule",
+      "Real photography given a full-width band and honest credits"
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "Observatory Sage is the system's only chromatic color, and it appears only on things that are links, tags, or live actions. It never fills a surface, never backs a block of text, and never gets a companion accent. Its scarcity is what makes it legible.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Paper Rule",
+        "body": "Only two surfaces exist: Paper (recessed) and Card (raised). Sections separate by alternating between them — never by tinting, never by adding a third tone. If a new surface seems necessary, the layout is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Micro-Label Rule",
+        "body": "Metadata labels are always Space Grotesk 500, at or below 0.625rem, uppercase, tracked at 0.14em or wider, in Subtle Ink or the accent. The wide tracking is what makes type this small legible — never set a label at small size without it. The tracking scale is deliberate: 0.22em for the tightest-set keys, 0.2em for tags and subheads, 0.14em for section meta and photo captions.",
+        "section": "typography"
+      },
+      {
+        "name": "The Serif Is For Names Rule",
+        "body": "The display face appears only on proper titles: the person's name, section titles, the contact tagline, and nav links. It never sets body copy, never sets a label, and never appears below 1.15rem.",
+        "section": "typography"
+      },
+      {
+        "name": "The Bounded Sheet Rule",
+        "body": "Content is capped at 960px and the page is always a finite object on a ground, never an edge-to-edge website. Any new section lives inside the sheet.",
+        "section": "layout"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Every structural division in the system is a 0.5px line in Hairline — section borders, card seams, sidebar dividers, table rows. Not 1px, not a shadow, not a color change alone.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-Except-the-Sheet Rule",
+        "body": "Nothing casts a shadow except the page sheet itself — not at rest, not on hover, not on focus. If an element needs to separate from its neighbor, give it a 0.5px hairline or move it to the other paper tone.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square-By-Default Rule",
+        "body": "New surfaces get 0 radius. A radius above 4px does not exist in this system, and rounding a card or a section would break the seam grid that the project layout depends on.",
+        "section": "shapes"
+      },
+      {
+        "name": "The No Lost Content Rule",
+        "body": "Nothing is removed from a narrow screen because it does not fit. Content that cannot sit side by side stacks, wraps, or moves below its heading — display: none is for a control that has been replaced by a better one at that size, never for a fact the visitor came to read.",
+        "section": "layout"
+      },
+      {
+        "name": "The No Italic Accent Rule",
+        "body": "Never italicise a word inside a heading or tagline for emphasis — not in the accent colour, not in the display face, not anywhere. The accented italic word in an otherwise roman heading is a generated-site tell, and no italic display face is shipped precisely so the pattern cannot return. Emphasis in this system comes from size, weight, and the accent colour on whole elements, never from a decorative word swap.",
+        "section": "typography"
+      },
+      {
+        "name": "The Name Comes First Rule",
+        "body": "Nothing is labelled above its own heading. A card, section, or block opens on its name — no category tag, kicker, or eyebrow sits above a heading to announce what is about to be said. The one label that reads like one, the role line under the hero name, sits below its heading as a subtitle, which is why it stays. A label above a heading is the clearest generated-layout tell in the set, and it almost never carries information the heading does not.",
+        "section": "typography"
+      },
+      {
+        "name": "The Eleven-Pixel Floor Rule",
+        "body": "Nothing a visitor has to read is set below 11px, ever — not a caption, not a year, not a footer line. The page still reads small and dense, which is the aesthetic; density is achieved with tight spacing and a restrained palette, never by shrinking type past the point where it can be read.",
+        "section": "typography"
+      },
+      {
+        "name": "The Seven Sizes Rule",
+        "body": "The page has exactly seven type sizes, declared as --t-* tokens. A new element picks the nearest existing role; it does not introduce an eighth value. Sizes a pixel apart are not hierarchy — they are noise that reads as carelessness.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Tracking Rule",
+        "body": "Every uppercase micro-label is tracked at --track-label (0.18em). One role, one tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Readable Ink Rule",
+        "body": "Every ink level clears 4.5:1 against both paper and card — 15.7 / 8.0 / 4.7. The ink ramp is warmed slightly toward the paper rather than left pure grey. A fourth, lighter grey does not get added: if something needs to be quieter than Subtle Ink, it gets smaller, lighter in weight, or moved — not fainter.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stoppable Motion Rule",
+        "body": "Any motion that starts on its own must be stoppable by every input method — pointer, touch, and keyboard focus alike — and must stop by itself once nobody can see it, whether the tab is hidden or the band has been scrolled past. Motion a visitor cannot stop is a failure regardless of how well it is drawn; motion running where nobody is looking is waste.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Reduced Motion Is Not No Motion Rule",
+        "body": "Under prefers-reduced-motion the page removes movement, not feedback. The photographic cross-fade and its autoplay go; the 0.15s and 0.2s colour and opacity transitions on hover and focus stay, because they confirm an action rather than move anything. A blanket transition-duration: 0.01ms !important is not an implementation of this rule — it is the failure this rule names.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep every new surface inside the 960px sheet and give it square corners.",
+      "Do separate things with a 0.5px Hairline rule or by switching between the two paper tones.",
+      "Do set every metadata label in Space Grotesk 500, uppercase, 0.625rem or smaller, tracked at 0.14em or wider.",
+      "Do reserve Observatory Sage for links, category tags, and live actions — and keep it rare enough to still read as a signal.",
+      "Do use the display face for names and section titles only.",
+      "Do give real photographs their captions and credits verbatim, always over the bottom scrim.",
+      "Do keep transitions short and colorless — 0.15s for links and hovers, 0.2s for control backgrounds. The only slow motion in the system is the carousel's 1s cross-fade.",
+      "Do match any new dot to a new slide, one for one."
+    ],
+    "donts": [
+      "Don't add a shadow to anything. One shadow exists and it belongs to the page sheet.",
+      "Don't introduce a second accent color or a semantic color set.",
+      "Don't fill a surface with Observatory Sage or set text on top of it.",
+      "Don't round a card, section, or panel beyond the established 3px / 4px exceptions.",
+      "Don't use a 1px border where the system uses 0.5px.",
+      "Don't set body copy or labels in the display face.",
+      "Don't treat the photographs as decoration that can be cropped, swapped for stock, or stripped of credits.",
+      "Don't hide content on small screens to make a layout fit. Stack it, wrap it, or move it under its heading instead.",
+      "Don't italicise an accent word inside a heading or tagline. No italic display face is shipped; see The No Italic Accent Rule.",
+      "Don't put a category tag, kicker, or eyebrow above a heading. See The Name Comes First Rule.",
+      "Don't ship content that only exists once JavaScript has run. Every word belongs in the markup; scripts enhance, they do not supply.",
+      "Don't let an element announce a role it does not fulfil — role=\"tab\" without a tabpanel is worse for a screen reader than no role at all.",
+      "Don't introduce an eighth type size, or set anything readable below 11px. See The Seven Sizes Rule and The Eleven-Pixel Floor Rule."
+    ]
+  }
+}

@@ -5,3 +5,10 @@ node_modules
 gulpfile.js
 package-lock.json
 package.json
+.impeccable/config.local.json
+
+# Per-tool agent configuration — local setup, not site content
+.agents/
+.codex/
+.gemini/
+.opencode/

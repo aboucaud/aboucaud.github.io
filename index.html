@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Alexandre Boucaud — Scientific Software Engineer, Astronomer, Data Scientist at CNRS">
   <meta name="author" content="Alexandre Boucaud">
   <link rel="shortcut icon" href="img/favicon.ico">
@@ -47,7 +47,6 @@
     <div class="topbar" aria-hidden="true"></div>
 
     <nav aria-label="Site navigation">
-      <span class="nav-name" data-fill="name"></span>
       <ul class="nav-links" role="list">
         <li><a href="#projects">Projects</a></li>
         <li><a href="#talks">Teaching</a></li>
@@ -57,20 +56,23 @@
 
     <div class="hero">
       <div class="hero-main">
-        <h1 class="hero-title" data-fill="name"></h1>
+        <h1 class="hero-title">Alexandre Boucaud</h1>
         <p class="hero-eyebrow"><strong>Astronomer · Computational Engineer</strong></p>
         <p class="hero-bio">
           I build open-source software and pipelines for large-scale astronomical experiments, at the intersection of
           signal processing, machine learning, and observational cosmology.<br>
-          I work for the <strong>CNRS Nucléaire &amp; Particules</strong>
-          and am currently based at <strong>AstroParticule &amp; Cosmologie (APC)</strong> laboratory in Paris, where I lead the IT department <em>Computing and data engineering</em> group.<br><br>
+          I work for the <strong lang="fr">CNRS Nucléaire &amp; Particules</strong>
+          and am currently based at <strong lang="fr">AstroParticule &amp; Cosmologie (APC)</strong> laboratory in Paris, where I lead the IT department <em>Computing and data engineering</em> group.<br><br>
           In 2024–2025 I spent a year on-site in Chile commissioning the filter exchange system of the LSST camera (see photos below)
         </p>
       </div>
       <div class="hero-side">
         <div class="side-block">
           <p class="side-key">Institution</p>
-          <p class="side-val" data-render="institution"></p>
+          <p class="side-val">
+            <a class="side-link" href="https://apc.u-paris.fr" lang="fr">AstroParticule &amp; Cosmologie</a> ·
+            <a class="side-link" href="https://www.in2p3.cnrs.fr">CNRS/IN2P3</a>
+          </p>
         </div>
         <div class="side-block">
           <p class="side-key">Research teams</p>
@@ -99,7 +101,11 @@
         </div>
         <div class="side-block">
           <p class="side-key">Links</p>
-          <p class="side-val" data-render="hero-links"></p>
+          <p class="side-val">
+            <a class="side-link" href="https://github.com/aboucaud">GitHub</a> ·
+            <a class="side-link" href="https://www.linkedin.com/in/aboucaud/">LinkedIn</a> ·
+            <a class="side-link" href="https://orcid.org/0000-0001-7387-2633">ORCID</a>
+          </p>
         </div>
         <div class="side-block">
           <p class="side-key">Education</p>
@@ -120,66 +126,67 @@
     </div>
 
     <!-- ── Photo carousel ─────────────────────────────────────── -->
-    <div class="carousel" id="carousel" aria-label="Photos from Vera C. Rubin Observatory, Cerro Pachón, Chile">
-      <div class="carousel-slides">
-        <div class="carousel-slide active" style="background-image: url('img/rubin-twilight.webp')">
+    <section class="carousel" id="carousel" aria-roledescription="carousel"
+             aria-label="Photos from Vera C. Rubin Observatory, Cerro Pachón, Chile">
+      <div class="carousel-slides" aria-live="off">
+        <div class="carousel-slide active" data-bg="rubin-twilight" role="group" aria-roledescription="slide" aria-label="1 of 13" style="background-image: url('img/small/rubin-twilight.webp')">
           <span class="carousel-caption">Rubin Observatory at twilight · Cerro Pachón, Chile</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/camera-team.webp'); background-position: center 25%">
+        <div class="carousel-slide" data-bg="camera-team" role="group" aria-roledescription="slide" aria-label="2 of 13" aria-hidden="true" style="background-position: center 25%">
           <span class="carousel-caption">Camera commissioning team with first image · control room - Credit W.O'Mullane (Rubin)</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/milky-way-clouds.webp'); background-position: center 55%">
+        <div class="carousel-slide" data-bg="milky-way-clouds" role="group" aria-roledescription="slide" aria-label="3 of 13" aria-hidden="true" style="background-position: center 55%">
           <span class="carousel-caption">Magellanic Clouds · Cerro Pachón</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/lsst-camera-inside.webp'); background-position: center 40%">
+        <div class="carousel-slide" data-bg="lsst-camera-inside" role="group" aria-roledescription="slide" aria-label="4 of 13" aria-hidden="true" style="background-position: center 40%">
           <span class="carousel-caption">Mario &amp; Claudio performing a filter swap on the LSSTCam - Credit T.Lange (SLAC)</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/rubin-dusk.webp')">
+        <div class="carousel-slide" data-bg="rubin-dusk" role="group" aria-roledescription="slide" aria-label="5 of 13" aria-hidden="true">
           <span class="carousel-caption">Rubin Observatory at dusk</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/crescent-moon.webp'); background-position: center 70%">
+        <div class="carousel-slide" data-bg="crescent-moon" role="group" aria-roledescription="slide" aria-label="6 of 13" aria-hidden="true" style="background-position: center 70%">
           <span class="carousel-caption">Iridescent sunset on Cerro Pachón</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/apc-team.webp'); background-position: center 50%">
+        <div class="carousel-slide" data-bg="apc-team" role="group" aria-roledescription="slide" aria-label="7 of 13" aria-hidden="true" style="background-position: center 50%">
           <span class="carousel-caption">Andy and I with the <em>g</em> filter down the LSSTCam barrel · dome</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/milky-way.webp'); background-position: center 30%">
+        <div class="carousel-slide" data-bg="milky-way" role="group" aria-roledescription="slide" aria-label="8 of 13" aria-hidden="true" style="background-position: center 30%">
           <span class="carousel-caption">Milky Way from Southern sky · Cerro Pachón</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/lsst-optical.webp'); background-position: center 30%">
+        <div class="carousel-slide" data-bg="lsst-optical" role="group" aria-roledescription="slide" aria-label="9 of 13" aria-hidden="true" style="background-position: center 30%">
           <span class="carousel-caption">LSST optical assembly - Credit T.Lange (SLAC)</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/rubin-exterior.webp'); background-position: center 60%">
+        <div class="carousel-slide" data-bg="rubin-exterior" role="group" aria-roledescription="slide" aria-label="10 of 13" aria-hidden="true" style="background-position: center 60%">
           <span class="carousel-caption">Vera C. Rubin Observatory · under construction</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/rubin-team-dome.webp'); background-position: center 40%">
+        <div class="carousel-slide" data-bg="rubin-team-dome" role="group" aria-roledescription="slide" aria-label="11 of 13" aria-hidden="true" style="background-position: center 40%">
           <span class="carousel-caption">Camera team photo (IN2P3 &amp; SLAC) · dome</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/rubin-sunset.webp')">
+        <div class="carousel-slide" data-bg="rubin-sunset" role="group" aria-roledescription="slide" aria-label="12 of 13" aria-hidden="true">
           <span class="carousel-caption">Sunset over the Andes</span>
         </div>
-        <div class="carousel-slide" style="background-image: url('img/rubin.webp'); background-position: center 30%">
+        <div class="carousel-slide" data-bg="rubin" role="group" aria-roledescription="slide" aria-label="13 of 13" aria-hidden="true" style="background-position: center 30%">
           <span class="carousel-caption">In front of Rubin Observatory · Cerro Pachón, Chile</span>
         </div>
       </div>
       <button class="carousel-btn carousel-prev" aria-label="Previous photo">&#8249;</button>
       <button class="carousel-btn carousel-next" aria-label="Next photo">&#8250;</button>
-      <div class="carousel-dots" role="tablist" aria-label="Photo navigation">
-        <button class="dot active" role="tab" aria-label="Photo 1" aria-selected="true"></button>
-        <button class="dot" role="tab" aria-label="Photo 2" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 3" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 4" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 5" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 6" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 7" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 8" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 9" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 10" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 11" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 12" aria-selected="false"></button>
-        <button class="dot" role="tab" aria-label="Photo 13" aria-selected="false"></button>
+      <div class="carousel-dots" role="group" aria-label="Choose a photo">
+        <button class="dot active" aria-label="Photo 1" aria-current="true"></button>
+        <button class="dot" aria-label="Photo 2"></button>
+        <button class="dot" aria-label="Photo 3"></button>
+        <button class="dot" aria-label="Photo 4"></button>
+        <button class="dot" aria-label="Photo 5"></button>
+        <button class="dot" aria-label="Photo 6"></button>
+        <button class="dot" aria-label="Photo 7"></button>
+        <button class="dot" aria-label="Photo 8"></button>
+        <button class="dot" aria-label="Photo 9"></button>
+        <button class="dot" aria-label="Photo 10"></button>
+        <button class="dot" aria-label="Photo 11"></button>
+        <button class="dot" aria-label="Photo 12"></button>
+        <button class="dot" aria-label="Photo 13"></button>
       </div>
-    </div>
+    </section>
 
     <section id="projects" class="section">
       <header class="section-header">
@@ -189,7 +196,6 @@
       </header>
       <div class="projects-grid">
         <article class="project-card">
-          <p class="project-tag">Survey · Camera</p>
           <h3 class="project-name">LSST / Rubin Observatory</h3>
           <p class="project-desc">Camera control software and commissioning for the Legacy Survey of Space and Time at Vera C. Rubin Observatory. On-site mission in Chile, Nov 2024 – Dec 2025.</p>
           <div class="project-links">
@@ -198,7 +204,6 @@
           </div>
         </article>
         <article class="project-card">
-          <p class="project-tag">Space mission · ESA</p>
           <h3 class="project-name">Euclid</h3>
           <p class="project-desc">Deep learning methods for galaxy image analysis and weak lensing pipelines for ESA's Euclid dark energy mission. Science ground segment integration at IAS and APC.</p>
           <div class="project-links">
@@ -206,7 +211,6 @@
           </div>
         </article>
         <article class="project-card">
-          <p class="project-tag">Deep learning · ANR</p>
           <h3 class="project-name">AstroDeep</h3>
           <p class="project-desc">ANR-funded research programme applying deep learning to galaxy morphology, weak lensing, and image deblending for next-generation sky surveys (LSST, Euclid).</p>
           <div class="project-links">
@@ -214,7 +218,6 @@
           </div>
         </article>
         <article class="project-card">
-          <p class="project-tag">Open source · Agentic AI</p>
           <h3 class="project-name">Lightcone Research</h3>
           <p class="project-desc">Open-source infrastructure for transparent and verifiable computational science assisted with agentic AI, all based on the ASTRA specification.</p>
           <div class="project-links">
@@ -250,7 +253,7 @@
         </div>
         <div class="talk-row" role="listitem">
           <span class="talk-year">2021-24</span>
-          <span class="talk-title">Modélisation et Machine Learning — Master course (45 h/yr) — Université Paris Cité</span>
+          <span class="talk-title"><span lang="fr">Modélisation et Machine Learning</span> — Master course (45 h/yr) — <span lang="fr">Université Paris Cité</span></span>
           <span class="talk-venue">Organizer, Lecturer</span>
         </div>
         <div class="talk-row" role="listitem">
@@ -280,20 +283,36 @@
       </div>
     </section>
 
-    <div class="contact-section" id="contact">
-      <p class="contact-tagline">Get in touch</p>
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+      <h2 class="contact-tagline" id="contact-heading">Get in touch</h2>
       <div class="contact-rule" aria-hidden="true"></div>
-      <div class="contact-links" data-render="contact-links"></div>
-    </div>
+      <div class="contact-links">
+        <a class="contact-link-row" href="mailto:aboucaud@apc.in2p3.fr">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-url">aboucaud@apc.in2p3.fr</span>
+        </a>
+        <a class="contact-link-row side-link" href="https://github.com/aboucaud">
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-url">github.com/aboucaud</span>
+        </a>
+        <a class="contact-link-row side-link" href="https://www.linkedin.com/in/aboucaud/">
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-url">linkedin.com/in/aboucaud</span>
+        </a>
+        <a class="contact-link-row side-link" href="https://orcid.org/0000-0001-7387-2633">
+          <span class="contact-link-label">ORCID</span>
+          <span class="contact-link-url">0000-0001-7387-2633</span>
+        </a>
+      </div>
+    </section>
 
     <footer>
-      <span class="footer-name" data-fill="name"></span>
-      <span class="footer-copy" data-fill="institution.footer"></span>
+      <span class="footer-name">Alexandre Boucaud</span>
+      <span class="footer-copy" lang="fr">AstroParticule &amp; Cosmologie – CNRS – IN2P3</span>
     </footer>
 
   </div>
 
-  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
