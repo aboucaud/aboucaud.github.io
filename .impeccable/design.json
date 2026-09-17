@@ -271,6 +271,16 @@
         "name": "no-hover",
         "value": "(hover: none)",
         "purpose": "Supplies :active feedback where hover can never fire."
+      },
+      {
+        "name": "print",
+        "value": "@media print",
+        "purpose": "Ink on white, interactive layer removed, outbound URLs printed after their link text."
+      },
+      {
+        "name": "forced-colors",
+        "value": "@media (forced-colors: active)",
+        "purpose": "The 2px accent bar becomes a CanvasText border; its background would otherwise be forced to Canvas and vanish."
       }
     ],
     "layout": [
@@ -512,6 +522,11 @@
       {
         "name": "The Landmark Rule",
         "body": "Every region of the page belongs to a landmark with a name. <main> holds everything between the nav and the footer; each <section> carries aria-labelledby pointing at its own heading. A <section> without an accessible name is not a landmark at all — it is a <div> that looks semantic in the source and does nothing for the person navigating by region.",
+        "section": "layout"
+      },
+      {
+        "name": "The Printable Page Rule",
+        "body": "A page listing an institution, an education history and three supervised students is one somebody eventually prints. Print removes the interactive layer and restores what the screen hides: every outbound URL is set after its link text, in normal case, because a label's uppercase tracking turns a URL into something unreadable. Rows whose text already is an address are exempt, or they print twice.",
         "section": "layout"
       }
     ],

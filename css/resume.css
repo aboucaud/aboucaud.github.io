@@ -817,6 +817,95 @@ footer {
   .nav-links a:active { color: var(--accent); }
 }
 
+/* ── Print ──────────────────────────────────────────────────────────
+   A page that lists an institution, an education history and three
+   supervised students is one somebody eventually prints. On paper the
+   interactive layer is noise: navigation you cannot click, a photo
+   band that arrives as an empty 340px box because browsers do not
+   print background images, and carousel controls that mean nothing.
+
+   What a printed copy needs instead is the thing the screen hides —
+   where the links actually went. Every outbound URL is printed after
+   its text, so the sheet stays useful once it leaves the browser. */
+@media print {
+  /* Ink and paper, not a sheet floating on a photograph. */
+  body { background: #fff; color: #000; }
+  body::before { display: none; }
+  .site { max-width: none; box-shadow: none; background: #fff; }
+
+  /* Controls, and anything that only exists to be clicked. */
+  nav, .skip-link, .carousel, .topbar, .contact-rule { display: none; }
+
+  /* Sections stop alternating; hairlines darken enough to survive. */
+  .section, .section-alt, .hero-main, .hero-side, .contact-section,
+  .project-card, .side-tag, .edu-year { background: #fff; }
+  .section, .hero, .talk-row, .contact-link-row, .contact-links,
+  .side-block, .side-tag, .edu-year, nav { border-color: #999; }
+
+  /* The hero's two columns become one; nothing is cropped away. */
+  .hero { display: block; }
+  .hero-main { padding: 0 0 18pt; border-right: none; }
+  .hero-side { padding: 0; }
+  .hero-bio { max-width: none; }
+  .projects-grid { display: block; background: none; }
+  .project-card { padding: 0 0 14pt; border-bottom: 0.5pt solid #ccc; }
+
+  /* The screen's whole point — where a link goes — is otherwise lost
+     on paper. 29 outbound links would print as undecipherable text. */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555;
+    word-break: break-all;
+    /* The label roles are uppercase and widely tracked; a URL
+       inheriting that prints as (HTTPS://RUBINOBSERVATORY.ORG/),
+       which is both ugly and harder to read than the link it
+       documents. URLs print as URLs. */
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+  }
+  a[href^="mailto:"]::after { content: ""; }
+  /* Contact rows already print the address as their own text —
+     appending the href would print every one of them twice. The
+     attribute selector is there for specificity: a[href^="http"]
+     above is (0,1,2) and would otherwise win. */
+  .contact-link-row[href]::after { content: ""; }
+
+  /* Four narrow columns on paper; one readable list instead. */
+  .contact-links { display: block; border: none; }
+  .contact-link-row {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10pt;
+    padding: 5pt 0;
+    border-right: none;
+    border-bottom: 0.5pt solid #ccc;
+  }
+  .contact-section { padding: 0; text-align: left; align-items: flex-start; }
+
+  /* Keep an entry with its heading rather than orphaned on a page. */
+  .project-link { border-bottom: none; }
+
+  .section-header, .talks-subhead { break-after: avoid; }
+  .talk-row, .project-card, .side-block, .edu-row { break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; }
+
+  @page { margin: 16mm; }
+}
+
+/* ── Forced colors (Windows High Contrast) ─────────────────────────
+   The OS palette takes over and the page stays perfectly usable —
+   verified. The one casualty is the 2px accent bar, whose background
+   is forced to Canvas and so vanishes against the canvas behind it.
+   A border uses CanvasText instead, which the OS keeps visible. */
+@media (forced-colors: active) {
+  .topbar {
+    height: 0;
+    border-top: 2px solid CanvasText;
+  }
+}
+
 /* ── Reduced motion ─────────────────────────────────────────────────
    Reduced motion is not "no motion". Nothing on this page animates a
    spatial property — no transforms, no keyframes, nothing that slides

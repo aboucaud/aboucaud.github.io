@@ -239,6 +239,8 @@ Four smaller queries refine that: `380px` tightens the nav for narrow phones; `(
 
 ### Named Rules
 
+**The Printable Page Rule.** A page listing an institution, an education history and three supervised students is one somebody eventually prints. Print removes the interactive layer and restores what the screen hides: every outbound URL is set after its link text, in normal case, because a label's uppercase tracking turns a URL into something unreadable. Rows whose text already is an address are exempt from that, or they print twice.
+
 **The Landmark Rule.** Every region of the page belongs to a landmark with a name. `<main>` holds everything between the nav and the footer; each `<section>` carries `aria-labelledby` pointing at its own heading. A `<section>` without an accessible name is not a landmark at all — it is a `<div>` that looks semantic in the source and does nothing for the person navigating by region.
 
 **The Bounded Sheet Rule.** Content is capped at 960px and the page is always a finite object on a ground, never an edge-to-edge website. Any new section lives inside the sheet.

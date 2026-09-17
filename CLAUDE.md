@@ -66,7 +66,7 @@ Layout principles:
 - Talks: minimal table-like list (year / title / venue)
 - Contact: centered tagline above a bordered row of link cells
 - No shadows (except the ambient glow around the page sheet), no gradients, 0.5px borders throughout
-- One breakpoint at 700px, refined by 380px, short-landscape, coarse-pointer and no-hover queries
+- One breakpoint at 700px, refined by 380px, short-landscape, coarse-pointer and no-hover queries, plus `@media print` and `@media (forced-colors: active)`
 
 ## Deployment
 
