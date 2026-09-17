@@ -329,7 +329,7 @@ The one place the system is loud, and the component the whole page is built arou
 - **Caption:** Bottom-left, Small (`0.75rem`) in sentence case in opaque `#ffffff`, no text-shadow — the scrim does that job. Opaque rather than translucent, because alpha would make the contrast depend on whichever photograph sits behind it. Captions carry photo credits and are content, not decoration, so they are set to be read rather than to look like labels.
 - **Controls:** `36px` circles (`44px` on coarse pointers) at `rgba(0,0,0,0.25)` with a 0.5px `rgba(255,255,255,0.3)` border and `blur(4px)` backdrop; hover deepens to `0.5` and brightens the border. Hidden below 700px.
 - **Accessibility:** the band is a `<section>` carrying `aria-roledescription="carousel"`; each slide is a labelled group and inactive ones are `aria-hidden`; dots are plain buttons with `aria-current`, never tabs; the slide container is `aria-live="off"` until the visitor navigates by hand.
-- **Dots:** A `5px` circle at `rgba(255,255,255,0.35)`, active at `0.9`, drawn as a pseudo-element centred inside a `16x34` transparent button — the mark stays small, the tap target does not.
+- **Dots:** A `5px` circle at `rgba(255,255,255,0.35)`, active at `0.9`, drawn as a pseudo-element centred inside a `16x34` transparent button — the mark stays small, the tap target does not. The rail owns the bottom `34px` of the band and the caption clears it by `40px` of slide padding: captions carry third-party credits and may not be overlaid at any width.
 - **Swipe:** Horizontal drags past `40px` move one slide; anything more vertical than horizontal is left to the page scroll.
 - **Invariant:** the number of dots must equal the number of slides, or navigation breaks.
 

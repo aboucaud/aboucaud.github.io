@@ -394,7 +394,12 @@ nav {
   transition: opacity 1.0s ease;
   display: flex;
   align-items: flex-end;
-  padding: 14px 20px;
+  /* The bottom 34px belong to the dot rail. Captions are content and
+     carry third-party photo credits, so they sit above it rather than
+     through it — at every width, because the collision is a function
+     of caption length, not viewport: the two longest captions ran
+     into the centred dots at 960px too. */
+  padding: 14px 20px 40px;
 }
 
 .carousel-slide::after {
