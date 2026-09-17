@@ -20,7 +20,11 @@ All content lives in `index.html`. Sections in order: hero, `#carousel`, `#proje
 - `css/resume.css` — custom styles (the only stylesheet to edit)
 - `js/main.js` — vanilla JS: external-link `target`/`rel` + photo carousel (auto-advance, prev/next, dots, swipe, deferred loading, pause on hover/touch/keyboard-focus/hidden tab/reduced motion)
 - `fonts/` — self-hosted woff2 files (IBM Plex Serif 400 roman, Space Grotesk 300–500 — the only two active families)
-- `img/small/` — 1000px-wide copies of the carousel photos, served below 700px; regenerate with `cwebp -resize 1000 0 -q 78`
+- `img/` — carousel photos at **1920px wide, q86** (the band is 960px with `background-size: cover`, so 1920 covers 2x DPR). Regenerate from an original with `cwebp -resize 1920 0 -q 86 <src> -o img/<name>.webp`
+- `img/small/` — 1000px-wide copies served below 700px; regenerate with `cwebp -resize 1000 0 -q 78 <src> -o img/small/<name>.webp`
+
+  **Never derive `img/small/` from `img/`** — both tiers come from the camera originals. Re-encoding an already-encoded file compresses it twice and the loss is cumulative.
+- `img/pachon.webp` — the fixed backdrop, deliberately left at 1387px/50 KB: it sits at 0.35 opacity behind the sheet, where resolution is imperceptible
 - `PRODUCT.md` / `DESIGN.md` — product truth and the design system. Read DESIGN.md before changing anything visual
 
 No build tooling — edits are made directly to `css/resume.css` and `index.html`.

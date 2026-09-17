@@ -327,6 +327,13 @@
         "license": "OFL",
         "note": "Vetted alternative to IBM Plex Serif — sharper and more elegant, closer to the previous DM Serif Display. Swap the @font-face src and family name; nothing else changes."
       }
+    ],
+    "assets": [
+      {
+        "name": "carousel-photography",
+        "value": "img/ at 1920px q86 · img/small/ at 1000px q78",
+        "purpose": "Both tiers are encoded from the camera originals and sized to the 960px band, never to the source. Deriving one tier from the other double-compresses."
+      }
     ]
   },
   "components": [
