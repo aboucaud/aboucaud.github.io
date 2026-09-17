@@ -19,7 +19,7 @@ Originally based on the [StartBootstrap-resume template](https://github.com/Blac
 
 **No JavaScript required for content.** Every word on the page is in `index.html`; JS only enhances.
 
-**Responsive images** (`img/small/`) — 1000px-wide copies of each carousel photo, served to viewports at or below 700px. Slides carry `data-bg` and load on demand, so a visit fetches the slide on screen and its two neighbours rather than all thirteen.
+**Responsive images** — two tiers, both sized to the 960px photo band rather than to the camera: `img/` at 1920px (2x DPR) and `img/small/` at 1000px for viewports at or below 700px. Slides carry `data-bg` and load on demand, so a visit fetches the slide on screen and its two neighbours rather than all thirteen.
 
 **GitHub Actions** (`.github/workflows/deploy.yml`) auto-deploys the `master` branch to `gh-pages` on every push.
 
