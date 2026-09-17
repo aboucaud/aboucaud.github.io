@@ -1,6 +1,14 @@
 /* ═══════════════════════════════════════════════════════════════
-   Editorial design — Space Grotesk + DM Serif Display
-   Bleu ardoise (default) / Vert sauge (toggle via .sage on #site)
+   Editorial design — Space Grotesk + IBM Plex Serif
+   Palette: Vert sauge, set directly in :root below.
+   Display face: IBM Plex Serif. Spectral is a vetted alternative —
+   see the note above the @font-face block.
+
+   Bleu ardoise — an alternative palette, NOT implemented. There is
+   no toggle and no .sage selector; swapping palettes means editing
+   the :root values. Kept here for reference only:
+     accent #3a5899   mid #7a9cc4   bg #f4f2ee
+     card   #ffffff   border #e0ddd8
    ═══════════════════════════════════════════════════════════════ */
 
 /* ── Self-hosted fonts ──────────────────────────────────────────── */
@@ -12,21 +20,38 @@
   src: url('../fonts/space-grotesk.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+/* Display face: IBM Plex Serif — low contrast, even stroke, squared
+   serifs. Chosen over DM Serif Display, whose high contrast read as
+   editorial rather than engineered.
+
+   ALTERNATIVE, vetted and ready: Spectral 400 (13.7 KB, OFL). Sharper
+   and more elegant, closer to the previous face. To switch: download
+   the Latin subset from Google Fonts, drop it in fonts/, and change
+   the family name and src below. Nothing else needs to change. */
 @font-face {
-  font-family: 'DM Serif Display';
+  font-family: 'IBM Plex Serif';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/dm-serif-display-400.woff2') format('woff2');
+  src: url('../fonts/ibm-plex-serif-400.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+/* ── Fallback metrics ───────────────────────────────────────────────
+   Measured against the real faces at 100px: IBM Plex Serif renders at
+   93.7% of Georgia's width, Space Grotesk at 104.6% of Arial's. These
+   size-adjust values make the fallback occupy the same space, so the
+   swap when the webfont arrives does not reflow the page. If the local
+   font is absent the @font-face simply fails and the stack continues. */
 @font-face {
-  font-family: 'DM Serif Display';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('../fonts/dm-serif-display-400-italic.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: 'Plex Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 93.7%;
+}
+@font-face {
+  font-family: 'Grotesk Fallback';
+  src: local('Arial'), local('Helvetica Neue');
+  size-adjust: 104.6%;
 }
 
 /* ── Custom Properties — Vert sauge ─────────────────────────────── */
@@ -36,16 +61,38 @@
   --bg:         #f4f2ee;
   --bg-card:    #ffffff;
   --border:     #deded8;
-  --text:       #1c1c1c;
-  --muted:      #5c5c5c;
-  --subtle:     #888888;
-  --ph1:        #d4d6ce;
-  --ph2:        #c0ccc4;
-  --ph3:        #d2d6c8;
-  --ph4:        #c4ccc8;
+  /* Ink ramp — three levels, each passing 4.5:1 on both paper and
+     card, warmed very slightly toward the paper so the text does not
+     read cold against it. Measured, not eyeballed:
+       text   15.7:1 / 17.5:1
+       muted   8.0:1 /  8.9:1
+       subtle  4.7:1 /  5.3:1  */
+  --text:       #1b1917;
+  --muted:      #4d4944;
+  --subtle:     #6f6b64;
+  /* The photographic layer. DESIGN.md named these as tokens before
+     they existed; they exist now. */
+  --backdrop:     #2a1f18;
+  --photo-ground: #111111;
+  --scrim:        rgba(0, 0, 0, 0.65);
 
-  --f-display: 'DM Serif Display', Georgia, serif;
-  --f-body:    'Space Grotesk', system-ui, sans-serif;
+  --f-display: 'IBM Plex Serif', 'Plex Fallback', Georgia, serif;
+  --f-body:    'Space Grotesk', 'Grotesk Fallback', system-ui, sans-serif;
+
+  /* ── Type scale ───────────────────────────────────────────────
+     Seven steps for the whole page. Every role below picks one of
+     these; nothing sets a size of its own. 11px is the hard floor
+     for anything a visitor has to read. */
+  --t-display:    clamp(2.1rem, 5vw, 3rem);      /* 33.6 - 48px  */
+  --t-headline:   clamp(1.6rem, 3.5vw, 2rem);    /* 25.6 - 32px  */
+  --t-title:      1.125rem;                       /* 18px         */
+  --t-body:       1rem;                           /* 16px         */
+  --t-supporting: 0.875rem;                       /* 14px         */
+  --t-small:      0.75rem;                        /* 12px         */
+  --t-label:      0.6875rem;                      /* 11px  FLOOR  */
+
+  /* One tracking for every uppercase micro-label. */
+  --track-label: 0.18em;
 }
 
 /* ── Reset ──────────────────────────────────────────────────────── */
@@ -55,12 +102,16 @@ html { scroll-behavior: smooth; }
 /* ── Base ───────────────────────────────────────────────────────── */
 body {
   font-family: var(--f-body);
-  font-size: 1rem;
+  font-size: var(--t-body);
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--muted);
-  background: #2a1f18;
+  background: var(--backdrop);
   -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+  /* keep the sheet clear of notches and rounded corners in landscape */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 body::before {
@@ -80,6 +131,19 @@ a {
   transition: opacity 0.15s;
 }
 a:hover { opacity: 0.7; }
+
+/* One focus ring for the whole page, in the palette rather than the
+   browser's blue. Offset so it never sits on the 0.5px hairlines. */
+:where(a, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Selection and caret belong to the palette too. */
+::selection {
+  background: var(--accent-mid);
+  color: var(--text);
+}
 
 /* ── Site wrapper ───────────────────────────────────────────────── */
 .site {
@@ -105,10 +169,6 @@ nav {
   border-bottom: 0.5px solid var(--border);
 }
 
-.nav-name {
-  display: none;
-}
-
 .nav-links {
   display: flex;
   gap: 52px;
@@ -117,10 +177,11 @@ nav {
 
 .nav-links a {
   font-family: var(--f-display);
-  font-size: 1.15rem;
+  font-size: var(--t-title);
   font-weight: 400;
+  line-height: 1.4;
   color: var(--muted);
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   transition: color 0.15s;
   opacity: 1;
 }
@@ -134,15 +195,17 @@ nav {
 }
 
 .hero-main {
+  min-width: 0;
   padding: 80px 40px 52px;
   background: var(--bg-card);
   border-right: 0.5px solid var(--border);
 }
 
 .hero-eyebrow {
-  font-size: 0.775rem;
+  font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.22em;
+  line-height: 1.4;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--accent);
   /* text-align: center; */
@@ -152,26 +215,19 @@ nav {
 
 .hero-title {
   font-family: var(--f-display);
-  font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+  font-size: var(--t-display);
   font-weight: 400;
-  /* font-variant-caps: small-caps; */
-  line-height: 1.5;
+  line-height: 1.12;
   color: var(--text);
   margin-bottom: 8px;
 }
 
-.hero-title em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-
 .hero-bio {
-  font-size: 0.9675rem;
-  line-height: 1.85;
+  font-size: var(--t-body);
+  line-height: 1.75;
   font-weight: 300;
   color: var(--muted);
-  max-width: 420px;
+  max-width: 34rem;
 }
 
 .hero-bio strong {
@@ -187,6 +243,7 @@ nav {
 .hero-bio a:hover { color: var(--accent); border-color: var(--accent); }
 
 .hero-side {
+  min-width: 0;
   padding: 36px 28px;
   background: var(--bg);
   display: flex;
@@ -204,19 +261,20 @@ nav {
 .side-block:last-child { border-bottom: none; }
 
 .side-key {
-  font-size: 0.5625rem;
+  font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.22em;
+  line-height: 1.4;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--subtle);
   margin-bottom: 6px;
 }
 
 .side-val {
-  font-size: 0.8125rem;
+  font-size: var(--t-supporting);
   font-weight: 400;
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .side-val a {
@@ -226,34 +284,44 @@ nav {
 .side-val a:hover { opacity: 0.7; }
 
 /* ── Education timeline ──────────────────────────────────────── */
-.edu { display: flex; flex-direction: column; gap: 8px; }
+.edu { display: flex; flex-direction: column; gap: 12px; }
 
+/* Degree and school stack in column 1, the year holds column 2 on the
+   first line. Fixed placement so every entry reads the same, whatever
+   the width — a wrapping flex row put some years inline and some below. */
 .edu-row {
-  display: flex; align-items: baseline; gap: 8px;
-  white-space: nowrap;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 10px;
+  align-items: baseline;
+  min-width: 0;
 }
+.edu-degree { grid-area: 1 / 1; }
+.edu-school { grid-area: 2 / 1; }
+.edu-year   { grid-area: 1 / 2; }
 
 .edu-year {
-  font-size: 0.5rem;
+  font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--accent);
   background: var(--bg);
   border: 0.5px solid var(--border);
   border-radius: 3px;
   padding: 2px 7px;
-  margin-left: auto;
 }
 
 .edu-degree {
-  font-size: 0.75rem;
+  white-space: nowrap;
+  font-size: var(--t-supporting);
   font-weight: 400;
   color: var(--text);
 }
 
 .edu-school {
-  font-size: 0.6875rem;
+  white-space: nowrap;
+  font-size: var(--t-small);
   font-weight: 300;
   color: var(--muted);
 }
@@ -266,8 +334,8 @@ nav {
 }
 
 .side-tag {
-  font-size: 0.625rem;
-  padding: 3px 9px;
+  font-size: var(--t-small);
+  padding: 4px 10px;
   border: 0.5px solid var(--border);
   border-radius: 3px;
   color: var(--muted);
@@ -280,7 +348,7 @@ nav {
   height: 340px;
   border-bottom: 0.5px solid var(--border);
   overflow: hidden;
-  background: #111;
+  background: var(--photo-ground);
 }
 
 .carousel-slides {
@@ -291,7 +359,7 @@ nav {
 .carousel-slide {
   position: absolute;
   inset: 0;
-  background: center / cover no-repeat #111;
+  background: center / cover no-repeat var(--photo-ground);
   opacity: 0;
   transition: opacity 1.0s ease;
   display: flex;
@@ -303,7 +371,7 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 40%, transparent 70%);
+  background: linear-gradient(to top, var(--scrim) 0%, rgba(0, 0, 0, 0.18) 40%, transparent 70%);
   pointer-events: none;
 }
 
@@ -312,10 +380,13 @@ nav {
 .carousel-caption {
   position: relative;
   z-index: 1;
-  font-size: 0.5625rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--t-small);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  /* Opaque rather than translucent: alpha would make the contrast
+     depend on whichever photograph is behind it. */
+  color: #ffffff;
   text-shadow: none;
 }
 
@@ -330,7 +401,7 @@ nav {
   border: 0.5px solid rgba(255, 255, 255, 0.3);
   background: rgba(0, 0, 0, 0.25);
   color: rgba(255, 255, 255, 0.85);
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* glyph size, not a text role */
   line-height: 1;
   cursor: pointer;
   display: flex;
@@ -344,29 +415,49 @@ nav {
   background: rgba(0, 0, 0, 0.5);
   border-color: rgba(255, 255, 255, 0.6);
 }
+.carousel-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 2px;
+}
 .carousel-prev { left: 16px; }
 .carousel-next { right: 16px; }
 
+@media (pointer: coarse) {
+  .carousel-btn { width: 44px; height: 44px; }
+}
+
 .carousel-dots {
   position: absolute;
-  bottom: 14px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 6px;
+  gap: 0;
 }
 
+/* The mark stays 5px; the button around it is a 16x34 tap target. */
 .dot {
+  width: 16px;
+  height: 34px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.dot::before {
+  content: '';
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  border: none;
   background: rgba(255, 255, 255, 0.35);
-  cursor: pointer;
-  padding: 0;
   transition: background 0.2s;
 }
-.dot.active { background: rgba(255, 255, 255, 0.9); }
+.dot.active::before { background: rgba(255, 255, 255, 0.9); }
+/* Over photography the page accent would vanish, so the dots keep a light ring. */
+.dot:focus-visible { outline: 2px solid rgba(255, 255, 255, 0.95); outline-offset: -6px; }
 
 /* ── Section common ─────────────────────────────────────────────── */
 .section {
@@ -387,8 +478,9 @@ nav {
 
 .section-title {
   font-family: var(--f-display);
-  font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+  font-size: var(--t-headline);
   font-weight: 400;
+  line-height: 1.15;
   color: var(--text);
   white-space: nowrap;
 }
@@ -400,8 +492,10 @@ nav {
 }
 
 .section-meta {
-  font-size: 0.625rem;
-  letter-spacing: 0.14em;
+  font-size: var(--t-label);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--subtle);
   white-space: nowrap;
@@ -420,17 +514,8 @@ nav {
   padding: 28px;
 }
 
-.project-tag {
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 10px;
-}
-
 .project-name {
-  font-size: 1rem;
+  font-size: var(--t-title);
   font-weight: 500;
   color: var(--text);
   margin-bottom: 10px;
@@ -438,9 +523,9 @@ nav {
 }
 
 .project-desc {
-  font-size: 0.78125rem;
+  font-size: var(--t-supporting);
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 1.65;
   color: var(--muted);
 }
 
@@ -451,13 +536,13 @@ nav {
 }
 
 .project-link {
-  font-size: 0.625rem;
+  font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--accent);
   padding-bottom: 2px;
-  border-bottom: 0.5px solid var(--accent-mid);
+  border-bottom: 0.5px solid var(--accent);
   opacity: 1;
   transition: opacity 0.15s;
 }
@@ -483,37 +568,37 @@ nav {
 
 .talks-subhead {
   font-family: var(--f-body);
-  font-size: 0.625rem;
+  font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--subtle);
   margin: 36px 0 0;
 }
 
 .talk-year {
-  font-size: 0.6875rem;
+  font-size: var(--t-small);
   color: var(--subtle);
 }
 
 .talk-title {
-  font-size: 0.8125rem;
+  font-size: var(--t-supporting);
   color: var(--text);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.55;
   opacity: 1;
 }
 .talk-title:hover { color: var(--accent); opacity: 1; }
 
 .talk-venue {
-  font-size: 0.6875rem;
+  font-size: var(--t-small);
   color: var(--muted);
   text-align: right;
   white-space: nowrap;
 }
 
 .talk-cosup {
-  font-size: 0.6875rem;
+  font-size: var(--t-small);
   font-weight: 300;
   color: var(--subtle);
   margin-left: 0.5em;
@@ -533,15 +618,10 @@ nav {
 
 .contact-tagline {
   font-family: var(--f-display);
-  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  font-size: var(--t-headline);
   font-weight: 400;
   color: var(--text);
-  line-height: 1.25;
-}
-
-.contact-tagline em {
-  font-style: italic;
-  color: var(--accent);
+  line-height: 1.15;
 }
 
 .contact-rule {
@@ -574,36 +654,43 @@ nav {
 .contact-link-row:hover { background: var(--bg-card); opacity: 1; }
 
 .contact-link-label {
-  font-size: 0.5rem;
+  font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--subtle);
 }
 
 .contact-link-url {
-  font-size: 0.6875rem;
+  font-size: var(--t-small);
   color: var(--accent);
 }
 
 /* ── Footer ─────────────────────────────────────────────────────── */
 footer {
-  padding: 20px 40px;
+  padding: 20px 40px max(20px, env(safe-area-inset-bottom));
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  gap: 4px 16px;
 }
 
 .footer-name,
 .footer-copy {
-  font-size: 0.6875rem;
+  font-size: var(--t-small);
   color: var(--subtle);
 }
 
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 700px) {
-  nav { padding: 16px 20px; }
-  .nav-links { display: none; }
+  nav { padding: 4px 20px; }
+  .nav-links { gap: 26px; }
+  .nav-links a {
+    display: inline-block;
+    padding: 12px 0;
+    font-size: var(--t-title);
+  }
 
   .hero {
     grid-template-columns: 1fr;
@@ -620,13 +707,30 @@ footer {
 
   .section { padding: 36px 20px; }
 
+  .section-header {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    margin-bottom: 28px;
+  }
+  .section-title {
+    flex: 1 1 100%;
+    white-space: normal;
+  }
+
   .projects-grid { grid-template-columns: 1fr; }
 
   .talk-row {
     grid-template-columns: 48px 1fr;
-    gap: 12px;
+    gap: 4px 12px;
   }
-  .talk-venue { display: none; }
+  .talk-year  { grid-column: 1; grid-row: 1; }
+  .talk-title { grid-column: 2; grid-row: 1; }
+  .talk-venue {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: left;
+    white-space: normal;
+  }
 
   .contact-section {
     padding: 36px 20px;
@@ -647,9 +751,55 @@ footer {
   .contact-link-row:last-child { border-bottom: none; }
 
   .contact-link-label {
-    font-size: 0.5625rem;
-    letter-spacing: 0.14em;
+    letter-spacing: var(--track-label);
   }
 
-  footer { padding: 16px 20px; }
+  footer { padding: 16px 20px max(16px, env(safe-area-inset-bottom)); }
+}
+
+/* ── Narrow phones ──────────────────────────────────────────────── */
+@media (max-width: 380px) {
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: var(--t-body); }
+}
+
+/* ── Short viewports (phone landscape) ──────────────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  nav { padding: 10px 40px; }
+  .nav-links a { padding: 8px 0; }
+
+  .hero-main { padding: 32px 40px 28px; }
+  .hero-side { padding: 24px 28px; }
+  .hero-eyebrow { margin-bottom: 24px; }
+
+  .carousel { height: 200px; }
+
+  .section { padding: 32px 40px; }
+  .section-header { margin-bottom: 24px; }
+
+  .contact-section { padding: 36px 40px 32px; }
+}
+
+/* ── Touch: hover does nothing, so press needs feedback ─────────── */
+@media (hover: none) {
+  a:active { opacity: 0.6; }
+  .contact-link-row:active { background: var(--bg-card); }
+  .nav-links a:active { color: var(--accent); }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────
+   Reduced motion is not "no motion". Nothing on this page animates a
+   spatial property — no transforms, no keyframes, nothing that slides
+   or travels. What moves is the photographic cross-fade, and what
+   changes is colour and opacity on hover and focus.
+
+   So the cross-fade goes (and JS stops the autoplay with it), while
+   the 0.15s and 0.2s feedback transitions stay: they confirm that a
+   link was hovered or a control focused, and removing them would take
+   away meaning without removing any movement. A blanket
+   `transition-duration: 0.01ms !important` would have done exactly
+   that. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .carousel-slide { transition: none; }
 }
