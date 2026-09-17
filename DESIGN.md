@@ -151,7 +151,7 @@ A muted, warm-neutral palette: two paper tones, a four-step grey ink scale, and 
 
 ### Primary
 
-- **Observatory Sage** (`#3d6b57`): The only chromatic color in the system. It marks every link, every category tag above a project name, the eyebrow under the name, the education years, the 2px bar across the very top of the page, and emphasized names inside the bio. It is never a background fill and never sits behind text.
+- **Observatory Sage** (`#3d6b57`): The only chromatic color in the system. It marks every link, the role line under the name, the education years, the 2px bar across the very top of the page, and emphasized names inside the bio. It is never a background fill and never sits behind text.
 - **Sage Mid** (`#8ab09a`): The accent at half strength, used exclusively for structural marks that shouldn't read as links — the 2.5px left rule on each sidebar block, and the underline beneath project links.
 
 ### Neutral
@@ -195,7 +195,9 @@ A muted, warm-neutral palette: two paper tones, a four-step grey ink scale, and 
 
 ### Named Rules
 
-**The Micro-Label Rule.** Metadata labels are always Space Grotesk 500, at or below `0.625rem`, uppercase, tracked at `0.14em` or wider, in Subtle Ink or the accent. The wide tracking is what makes type this small legible — never set a label at small size without it. The tracking scale is deliberate: `0.22em` for the tightest-set keys (sidebar keys, hero eyebrow), `0.2em` for tags and subheads, `0.14em` for section meta and photo captions.
+**The Micro-Label Rule.** Metadata labels are always Space Grotesk 500, at or below `0.625rem`, uppercase, tracked at `0.14em` or wider, in Subtle Ink or the accent. The wide tracking is what makes type this small legible — never set a label at small size without it. The tracking scale is deliberate: `0.22em` for the tightest-set keys (sidebar keys, role line), `0.2em` for subheads and contact labels, `0.14em` for section meta and photo captions.
+
+**The Name Comes First Rule.** Nothing is labelled above its own heading. A card, section, or block opens on its name — no category tag, kicker, or eyebrow sits above a heading to announce what is about to be said. The one label that reads like one, the role line under the hero name, sits *below* its heading as a subtitle, which is why it stays. A label above a heading is the clearest generated-layout tell in the set, and it almost never carries information the heading does not.
 
 **The Serif Is For Names Rule.** The display face appears only on proper titles: the person's name, section titles, the contact tagline, and nav links. It never sets body copy, never sets a label, and never appears below `1.15rem`.
 
@@ -279,7 +281,7 @@ This site has no general-purpose button. The only true buttons are the carousel 
 - **Shadow Strategy:** None — see Elevation & Depth.
 - **Border:** None of their own; the 1px grid gap supplies every seam.
 - **Internal Padding:** `28px`.
-- **Contents in order:** accent category tag (Label, `0.5625rem`, `0.2em`), project name (Title), description (Body Small), then a `12px`-gapped row of project links.
+- **Contents in order:** project name (Title), description (Body Small), then a `12px`-gapped row of project links. The card opens on the name — no label sits above it.
 
 ### Chips
 
@@ -317,7 +319,7 @@ The one place the system is loud, and the component the whole page is built arou
 - **Do** keep every new surface inside the 960px sheet and give it square corners.
 - **Do** separate things with a 0.5px Hairline rule or by switching between the two paper tones.
 - **Do** set every metadata label in Space Grotesk 500, uppercase, `0.625rem` or smaller, tracked at `0.14em` or wider.
-- **Do** reserve Observatory Sage for links, category tags, and live actions — and keep it rare enough to still read as a signal.
+- **Do** reserve Observatory Sage for links, the role line, and live actions — and keep it rare enough to still read as a signal.
 - **Do** use the display face for names and section titles only.
 - **Do** give real photographs their captions and credits verbatim, always over the bottom scrim.
 - **Do** keep transitions short and colorless — `0.15s` for links and hovers, `0.2s` for control backgrounds. The only slow motion in the system is the carousel's 1s cross-fade.
@@ -335,3 +337,4 @@ The one place the system is loud, and the component the whole page is built arou
 - **Don't** treat the photographs as decoration that can be cropped, swapped for stock, or stripped of credits.
 - **Don't** hide content on small screens to make a layout fit. Stack it, wrap it, or move it under its heading instead.
 - **Don't** italicise an accent word inside a heading or tagline. No italic display face is shipped; see The No Italic Accent Rule.
+- **Don't** put a category tag, kicker, or eyebrow above a heading. See The Name Comes First Rule.
