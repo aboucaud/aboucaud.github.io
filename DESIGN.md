@@ -243,6 +243,8 @@ The one blur in the system is `backdrop-filter: blur(4px)` on the carousel arrow
 
 ### Named Rules
 
+**The Stoppable Motion Rule.** Any motion that starts on its own must be stoppable by every input method — pointer, touch, and keyboard focus alike. The carousel pauses on all three. Motion a visitor cannot stop is a failure regardless of how well it is drawn.
+
 **The Flat-Except-the-Sheet Rule.** Nothing casts a shadow except the page sheet itself — not at rest, not on hover, not on focus. If an element needs to separate from its neighbor, give it a 0.5px hairline or move it to the other paper tone.
 
 ## Shapes
@@ -303,7 +305,8 @@ The one place the system is loud, and the component the whole page is built arou
 - **Loading:** Slides carry `data-bg` rather than a background image; only the current slide and its two neighbours are fetched, and viewports at or below `700px` are served the `img/small/` copies. The first slide keeps a small inline background so the band still renders without JS.
 - **Scrim:** Every slide carries a bottom-up gradient (`rgba(0,0,0,0.55)` → `rgba(0,0,0,0.15)` at 40% → transparent at 70%) so captions stay legible over any image.
 - **Caption:** Bottom-left, `0.5625rem` uppercase at `0.14em` in `rgba(255,255,255,0.85)`, no text-shadow — the scrim does that job. Captions carry photo credits and are content, not decoration.
-- **Controls:** `36px` circles at `rgba(0,0,0,0.25)` with a 0.5px `rgba(255,255,255,0.3)` border and `blur(4px)` backdrop; hover deepens to `0.5` and brightens the border. Hidden below 700px.
+- **Controls:** `36px` circles (`44px` on coarse pointers) at `rgba(0,0,0,0.25)` with a 0.5px `rgba(255,255,255,0.3)` border and `blur(4px)` backdrop; hover deepens to `0.5` and brightens the border. Hidden below 700px.
+- **Accessibility:** the band is a `<section>` carrying `aria-roledescription="carousel"`; each slide is a labelled group and inactive ones are `aria-hidden`; dots are plain buttons with `aria-current`, never tabs; the slide container is `aria-live="off"` until the visitor navigates by hand.
 - **Dots:** A `5px` circle at `rgba(255,255,255,0.35)`, active at `0.9`, drawn as a pseudo-element centred inside a `16x34` transparent button — the mark stays small, the tap target does not.
 - **Swipe:** Horizontal drags past `40px` move one slide; anything more vertical than horizontal is left to the page scroll.
 - **Invariant:** the number of dots must equal the number of slides, or navigation breaks.
@@ -338,3 +341,5 @@ The one place the system is loud, and the component the whole page is built arou
 - **Don't** hide content on small screens to make a layout fit. Stack it, wrap it, or move it under its heading instead.
 - **Don't** italicise an accent word inside a heading or tagline. No italic display face is shipped; see The No Italic Accent Rule.
 - **Don't** put a category tag, kicker, or eyebrow above a heading. See The Name Comes First Rule.
+- **Don't** ship content that only exists once JavaScript has run. Every word belongs in the markup; scripts enhance, they do not supply.
+- **Don't** let an element announce a role it does not fulfil — `role="tab"` without a `tabpanel` is worse for a screen reader than no role at all.

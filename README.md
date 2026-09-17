@@ -15,7 +15,9 @@ Originally based on the [StartBootstrap-resume template](https://github.com/Blac
 
 **Single stylesheet** (`css/resume.css`) using CSS custom properties for the color palette. No utility-class framework.
 
-**Vanilla JS** (`js/main.js`) — two IIFEs: one fills personal details from `js/data.js`, one drives the photo carousel (auto-advance, prev/next, dots, swipe, deferred image loading, and pausing on hover, touch, hidden tab or `prefers-reduced-motion`).
+**Vanilla JS** (`js/main.js`) — two IIFEs: one applies `target`/`rel` to external links, one drives the photo carousel (auto-advance, prev/next, dots, swipe, deferred image loading, and pausing on hover, touch, keyboard focus, hidden tab or `prefers-reduced-motion`).
+
+**No JavaScript required for content.** Every word on the page is in `index.html`; JS only enhances.
 
 **Responsive images** (`img/small/`) — 1000px-wide copies of each carousel photo, served to viewports at or below 700px. Slides carry `data-bg` and load on demand, so a visit fetches the slide on screen and its two neighbours rather than all thirteen.
 

@@ -1,38 +1,7 @@
-/* ── Config fill ─────────────────────────────────────────────────── */
+/* ── External links ──────────────────────────────────────────────────
+   Semantic classes instead of inline target/rel; applied at load.
+   Content itself lives in index.html so the page works without JS. */
 (function () {
-  if (typeof SITE === 'undefined') return;
-
-  document.querySelectorAll('[data-fill]').forEach(el => {
-    const val = el.dataset.fill.split('.').reduce((o, k) => o?.[k], SITE);
-    if (val != null) el.textContent = val;
-  });
-
-  const r = (sel, html) => { const el = document.querySelector(sel); if (el) el.innerHTML = html; };
-
-  r('[data-render="institution"]',
-    `<a class="side-link" href="${SITE.institution.lab.url}">${SITE.institution.lab.name}</a> · ` +
-    `<a class="side-link" href="${SITE.institution.cnrs.url}">${SITE.institution.cnrs.name}</a>`
-  );
-
-  r('[data-render="hero-links"]',
-    SITE.links.map(l =>
-      `<a class="side-link" href="${l.url}">${l.label}</a>`
-    ).join(' · ')
-  );
-
-  r('[data-render="contact-links"]',
-    `<a class="contact-link-row" href="mailto:${SITE.email}">` +
-      `<span class="contact-link-label">Email</span>` +
-      `<span class="contact-link-url">${SITE.email}</span>` +
-    `</a>` +
-    SITE.links.map(l =>
-      `<a class="contact-link-row side-link" href="${l.url}">` +
-        `<span class="contact-link-label">${l.label}</span>` +
-        `<span class="contact-link-url">${l.display}</span>` +
-      `</a>`
-    ).join('')
-  );
-
   document.querySelectorAll('.project-link, .side-link, .talk-link').forEach(a => {
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
@@ -44,6 +13,7 @@
   const slides = document.querySelectorAll('.carousel-slide');
   const dots   = document.querySelectorAll('.dot');
   const carousel = document.getElementById('carousel');
+  const liveRegion = document.querySelector('.carousel-slides');
   if (!slides.length || !carousel) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -74,6 +44,19 @@
       slide.style.backgroundImage = "url('" + url + "')";
       slide.dataset.loaded = url;
     };
+    pre.onerror = () => {
+      /* A missing small copy falls back to the full-size original once;
+         a missing original leaves the slide on its dark ground. */
+      const full = 'img/' + name + '.webp';
+      if (url === full) { slide.dataset.loaded = 'failed'; return; }
+      const retry = new Image();
+      retry.onload = () => {
+        slide.style.backgroundImage = "url('" + full + "')";
+        slide.dataset.loaded = full;
+      };
+      retry.onerror = () => { slide.dataset.loaded = 'failed'; };
+      retry.src = full;
+    };
     pre.src = url;
   }
 
@@ -92,9 +75,10 @@
     const prev = current;
     slides[prev].style.zIndex = '1';
     slides[prev].classList.remove('active');
+    slides[prev].setAttribute('aria-hidden', 'true');
     if (dots[prev]) {
       dots[prev].classList.remove('active');
-      dots[prev].setAttribute('aria-selected', 'false');
+      dots[prev].removeAttribute('aria-current');
     }
 
     current = (n + slides.length) % slides.length;
@@ -102,9 +86,10 @@
 
     slides[current].style.zIndex = '2';
     slides[current].classList.add('active');
+    slides[current].removeAttribute('aria-hidden');
     if (dots[current]) {
       dots[current].classList.add('active');
-      dots[current].setAttribute('aria-selected', 'true');
+      dots[current].setAttribute('aria-current', 'true');
     }
 
     setTimeout(() => {
@@ -123,12 +108,24 @@
   }
   function resetTimer() { stopTimer(); startTimer(); }
 
-  document.querySelector('.carousel-next').addEventListener('click', () => { goTo(current + 1); resetTimer(); });
-  document.querySelector('.carousel-prev').addEventListener('click', () => { goTo(current - 1); resetTimer(); });
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetTimer(); }));
+  /* Announce only what the visitor asked for: an unattended slide change
+     every five seconds is noise, a deliberate one is the answer to a click. */
+  function announce() { if (liveRegion) liveRegion.setAttribute('aria-live', 'polite'); }
+
+  document.querySelector('.carousel-next').addEventListener('click', () => { announce(); goTo(current + 1); resetTimer(); });
+  document.querySelector('.carousel-prev').addEventListener('click', () => { announce(); goTo(current - 1); resetTimer(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { announce(); goTo(i); resetTimer(); }));
 
   carousel.addEventListener('mouseenter', stopTimer);
   carousel.addEventListener('mouseleave', resetTimer);
+
+  /* WCAG 2.2.2: moving content needs a pause mechanism every input method
+     can reach. Hover covers the mouse, touchstart covers touch, and this
+     covers the keyboard — tabbing into the carousel stops the rotation. */
+  carousel.addEventListener('focusin', stopTimer);
+  carousel.addEventListener('focusout', event => {
+    if (!carousel.contains(event.relatedTarget)) resetTimer();
+  });
 
   /* A backgrounded tab shouldn't burn through the set. */
   document.addEventListener('visibilitychange', () => {

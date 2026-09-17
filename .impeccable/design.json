@@ -355,7 +355,7 @@
       "name": "Carousel Controls",
       "kind": "button",
       "refersTo": "carousel-btn",
-      "description": "The only true buttons in the system: blurred translucent circles over photography, plus the dot row — a 5px mark centred in a 16x34 tap target. Arrows are hidden below 700px, where swipe takes over.",
+      "description": "The only true buttons in the system: blurred translucent circles over photography, plus the dot row — a 5px mark centred in a 16x34 tap target. Arrows are hidden below 700px, where swipe takes over. Dots are plain buttons with aria-current, never tabs.",
       "html": "<div class=\"ds-carousel-demo\"><button class=\"ds-carousel-btn\" aria-label=\"Previous photo\">&#8249;</button><button class=\"ds-carousel-btn\" aria-label=\"Next photo\">&#8250;</button><div class=\"ds-dots\"><button class=\"ds-dot ds-dot-active\" aria-label=\"Photo 1\"></button><button class=\"ds-dot\" aria-label=\"Photo 2\"></button><button class=\"ds-dot\" aria-label=\"Photo 3\"></button></div></div>",
       "css": ".ds-carousel-demo { display: flex; align-items: center; gap: 16px; padding: 24px; background: #2a2a28; } .ds-carousel-btn { width: 36px; height: 36px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.25); color: rgba(255,255,255,0.85); font-size: 1.25rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); transition: background 0.2s, border-color 0.2s; } .ds-carousel-btn:hover { background: rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.6); } .ds-carousel-btn:focus-visible { outline: 2px solid rgba(255,255,255,0.9); outline-offset: 2px; } @media (pointer: coarse) { .ds-carousel-btn { width: 44px; height: 44px; } } .ds-dots { display: flex; gap: 0; margin-left: auto; } .ds-dot { width: 16px; height: 34px; border: none; background: none; padding: 0; cursor: pointer; display: grid; place-items: center; } .ds-dot::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.35); transition: background 0.2s; } .ds-dot:hover::before, .ds-dot-active::before { background: rgba(255,255,255,0.9); } .ds-dot:focus-visible { outline: 1px solid rgba(255,255,255,0.9); outline-offset: -6px; }"
     },
@@ -441,6 +441,11 @@
         "name": "The Name Comes First Rule",
         "body": "Nothing is labelled above its own heading. A card, section, or block opens on its name — no category tag, kicker, or eyebrow sits above a heading to announce what is about to be said. The one label that reads like one, the role line under the hero name, sits below its heading as a subtitle, which is why it stays. A label above a heading is the clearest generated-layout tell in the set, and it almost never carries information the heading does not.",
         "section": "typography"
+      },
+      {
+        "name": "The Stoppable Motion Rule",
+        "body": "Any motion that starts on its own must be stoppable by every input method — pointer, touch, and keyboard focus alike. The carousel pauses on all three. Motion a visitor cannot stop is a failure regardless of how well it is drawn.",
+        "section": "elevation"
       }
     ],
     "dos": [
@@ -464,7 +469,9 @@
       "Don't treat the photographs as decoration that can be cropped, swapped for stock, or stripped of credits.",
       "Don't hide content on small screens to make a layout fit. Stack it, wrap it, or move it under its heading instead.",
       "Don't italicise an accent word inside a heading or tagline. No italic display face is shipped; see The No Italic Accent Rule.",
-      "Don't put a category tag, kicker, or eyebrow above a heading. See The Name Comes First Rule."
+      "Don't put a category tag, kicker, or eyebrow above a heading. See The Name Comes First Rule.",
+      "Don't ship content that only exists once JavaScript has run. Every word belongs in the markup; scripts enhance, they do not supply.",
+      "Don't let an element announce a role it does not fulfil — role=\"tab\" without a tabpanel is worse for a screen reader than no role at all."
     ]
   }
 }

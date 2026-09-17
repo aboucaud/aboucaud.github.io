@@ -78,6 +78,20 @@ a {
 }
 a:hover { opacity: 0.7; }
 
+/* One focus ring for the whole page, in the palette rather than the
+   browser's blue. Offset so it never sits on the 0.5px hairlines. */
+:where(a, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Selection and caret belong to the palette too. */
+::selection {
+  background: var(--accent-mid);
+  color: var(--text);
+}
+
 /* ── Site wrapper ───────────────────────────────────────────────── */
 .site {
   max-width: 960px;
@@ -336,6 +350,10 @@ nav {
   background: rgba(0, 0, 0, 0.5);
   border-color: rgba(255, 255, 255, 0.6);
 }
+.carousel-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 2px;
+}
 .carousel-prev { left: 16px; }
 .carousel-next { right: 16px; }
 
@@ -373,7 +391,8 @@ nav {
   transition: background 0.2s;
 }
 .dot.active::before { background: rgba(255, 255, 255, 0.9); }
-.dot:focus-visible { outline: 1px solid rgba(255, 255, 255, 0.9); outline-offset: -6px; }
+/* Over photography the page accent would vanish, so the dots keep a light ring. */
+.dot:focus-visible { outline: 2px solid rgba(255, 255, 255, 0.95); outline-offset: -6px; }
 
 /* ── Section common ─────────────────────────────────────────────── */
 .section {

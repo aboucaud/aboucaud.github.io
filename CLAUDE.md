@@ -18,13 +18,14 @@ To publish, push or merge to `master` — the Actions workflow deploys to `gh-pa
 All content lives in `index.html`. Sections in order: hero, `#carousel`, `#projects`, `#talks`, `#contact`, footer.
 
 - `css/resume.css` — custom styles (the only stylesheet to edit)
-- `js/data.js` — single source of truth for personal info (name, email, institution, social links); edit this to update repeated values across the page
-- `js/main.js` — vanilla JS: config fill + photo carousel (auto-advance, prev/next, dots, swipe, deferred loading, pause on hover/touch/hidden tab/reduced motion)
+- `js/main.js` — vanilla JS: external-link `target`/`rel` + photo carousel (auto-advance, prev/next, dots, swipe, deferred loading, pause on hover/touch/keyboard-focus/hidden tab/reduced motion)
 - `fonts/` — self-hosted woff2 files (DM Serif Display 400 roman, Space Grotesk 300–500 — the only two active families)
 - `img/small/` — 1000px-wide copies of the carousel photos, served below 700px; regenerate with `cwebp -resize 1000 0 -q 78`
 - `PRODUCT.md` / `DESIGN.md` — product truth and the design system. Read DESIGN.md before changing anything visual
 
-No build tooling — edits are made directly to `css/resume.css`, `js/data.js`, and `index.html`.
+No build tooling — edits are made directly to `css/resume.css` and `index.html`.
+
+**All content lives in `index.html`.** There is no runtime templating: the name, institution, links and contact rows are written in the markup so the page works with JavaScript disabled. Changing a name or URL means editing it wherever it appears (the name twice, each social link twice).
 
 ## Link conventions
 
@@ -34,18 +35,7 @@ External links that should open in a new tab get a semantic class instead of inl
 - `.side-link` — links in the hero sidebar and JS-rendered blocks (institution, social links)
 - `.talk-link` — links in the teaching and PhD supervision lists
 
-Contact section links are rendered entirely from `js/data.js`; their `target`/`rel` are set in the JS template. The mailto link intentionally has no `target`.
-
-## `js/data.js` — personal info config
-
-To update a name, URL, or social handle, edit only `js/data.js`. The following are rendered from it at runtime (the HTML elements are empty placeholders):
-
-- `SITE.name` → nav, hero `<h1>`, footer
-- `SITE.institution.{lab,cnrs,footer}` → hero Institution block, footer text
-- `SITE.links` → hero Links block, contact section social rows
-- `SITE.email` → contact section email row
-
-`<head>` meta tags and JSON-LD structured data remain static in `index.html` (they are read before JS runs).
+Contact rows carry `.side-link` so the same JS applies `target`/`rel`. The mailto link intentionally has neither the class nor a `target`.
 
 ## Design
 
@@ -78,6 +68,16 @@ GitHub Actions (`deploy.yml`) auto-deploys `master` → `gh-pages` on push. Dev 
 ## Palette toggle
 
 **Not implemented.** The `.sage` selector, toggle UI, and `setPalette()` function were removed. The active palette is Vert sauge (green accent `#3d6b57`), set directly in `:root`; Bleu ardoise survives only as a reference comment at the top of `css/resume.css`.
+
+## Accessibility contract
+
+Deliberate, verified choices — do not undo them casually:
+
+- The carousel pauses on hover, touch, **and keyboard focus** (`focusin`). The focus pause is what satisfies WCAG 2.2.2 Pause, Stop, Hide (Level A) — hover alone leaves keyboard users with no way to stop it.
+- Inactive slides carry `aria-hidden="true"` so screen readers read one caption, not thirteen. `goTo()` moves that attribute.
+- Dots are plain buttons with `aria-current` on the active one. They are **not** tabs: `role="tab"` without a `tabpanel` is a broken contract.
+- `.carousel-slides` is `aria-live="off"` and is switched to `polite` only on manual navigation, so autoplay does not announce every five seconds.
+- Content is in the markup, not rendered by JS, so the page survives with scripting disabled.
 
 ## Carousel maintenance
 
