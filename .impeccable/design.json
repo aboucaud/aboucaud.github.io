@@ -168,7 +168,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The person's name in the hero, and nothing else. Display family is provisional — under review."
+        "purpose": "The person's name in the hero, and nothing else. Roman only — no italic face is shipped. Display family is provisional — under review."
       },
       "headline": {
         "displayName": "Headline",
@@ -431,6 +431,11 @@
         "name": "The No Lost Content Rule",
         "body": "Nothing is removed from a narrow screen because it does not fit. Content that cannot sit side by side stacks, wraps, or moves below its heading — display: none is for a control that has been replaced by a better one at that size, never for a fact the visitor came to read.",
         "section": "layout"
+      },
+      {
+        "name": "The No Italic Accent Rule",
+        "body": "Never italicise a word inside a heading or tagline for emphasis — not in the accent colour, not in the display face, not anywhere. The accented italic word in an otherwise roman heading is a generated-site tell, and no italic display face is shipped precisely so the pattern cannot return. Emphasis in this system comes from size, weight, and the accent colour on whole elements, never from a decorative word swap.",
+        "section": "typography"
       }
     ],
     "dos": [
@@ -452,7 +457,8 @@
       "Don't use a 1px border where the system uses 0.5px.",
       "Don't set body copy or labels in the display face.",
       "Don't treat the photographs as decoration that can be cropped, swapped for stock, or stripped of credits.",
-      "Don't hide content on small screens to make a layout fit. Stack it, wrap it, or move it under its heading instead."
+      "Don't hide content on small screens to make a layout fit. Stack it, wrap it, or move it under its heading instead.",
+      "Don't italicise an accent word inside a heading or tagline. No italic display face is shipped; see The No Italic Accent Rule."
     ]
   }
 }

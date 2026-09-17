@@ -176,7 +176,7 @@ A muted, warm-neutral palette: two paper tones, a four-step grey ink scale, and 
 
 ## Typography
 
-**Display Font:** DM Serif Display (with Georgia, serif) — *self-hosted woff2, 400 roman + 400 italic*
+**Display Font:** DM Serif Display (with Georgia, serif) — *self-hosted woff2, 400 roman only; no italic is shipped*
 **Body Font:** Space Grotesk (with system-ui, sans-serif) — *self-hosted woff2, variable 300–500*
 
 **Character:** A high-contrast serif for names and titles against a geometric grotesk with slightly odd, technical letterforms for everything else. The grotesk does the real work; it carries body copy at 300 and every micro-label at 500. Both faces are self-hosted as woff2 with a Latin-only unicode-range — the page makes no external font requests.
@@ -198,6 +198,8 @@ A muted, warm-neutral palette: two paper tones, a four-step grey ink scale, and 
 **The Micro-Label Rule.** Metadata labels are always Space Grotesk 500, at or below `0.625rem`, uppercase, tracked at `0.14em` or wider, in Subtle Ink or the accent. The wide tracking is what makes type this small legible — never set a label at small size without it. The tracking scale is deliberate: `0.22em` for the tightest-set keys (sidebar keys, hero eyebrow), `0.2em` for tags and subheads, `0.14em` for section meta and photo captions.
 
 **The Serif Is For Names Rule.** The display face appears only on proper titles: the person's name, section titles, the contact tagline, and nav links. It never sets body copy, never sets a label, and never appears below `1.15rem`.
+
+**The No Italic Accent Rule.** Never italicise a word inside a heading or tagline for emphasis — not in the accent colour, not in the display face, not anywhere. The accented italic word in an otherwise roman heading is a generated-site tell, and no italic display face is shipped precisely so the pattern cannot return. Emphasis in this system comes from size, weight, and the accent colour on whole elements, never from a decorative word swap.
 
 **The Sub-Rem Rule.** Almost nothing on this page is set at or above `1rem`. Body copy runs at `0.9675rem` and supporting text at `0.6875rem`–`0.8125rem`. The smallness is the aesthetic — it reads as technical documentation rather than marketing. Preserve it; do not "fix" the page by scaling type up.
 
@@ -259,7 +261,7 @@ This site has no general-purpose button. The only true buttons are the carousel 
 
 ### Navigation
 
-- **Style:** A centered horizontal list on Card with a 0.5px bottom border, `22px 40px` padding, `52px` between items. The name slot exists in the markup but is hidden on all viewports (`.nav-name { display: none }`).
+- **Style:** A centered horizontal list on Card with a 0.5px bottom border, `22px 40px` padding, `52px` between items.
 - **Typography:** Display face at `1.15rem`, Muted Ink.
 - **Hover:** Color shifts to Observatory Sage over `0.15s`. No underline, no opacity change — nav opts out of the global link fade.
 - **Mobile:** Below 700px the same three links stay inline, tightened to `26px` gaps at `1.02rem` (`18px` / `0.95rem` below 380px), with `12px` of vertical padding giving each link a ~52px tall tap target. No menu button, no drawer, no JS — the link set is small enough to stay visible at every width.
@@ -332,3 +334,4 @@ The one place the system is loud, and the component the whole page is built arou
 - **Don't** set body copy or labels in the display face.
 - **Don't** treat the photographs as decoration that can be cropped, swapped for stock, or stripped of credits.
 - **Don't** hide content on small screens to make a layout fit. Stack it, wrap it, or move it under its heading instead.
+- **Don't** italicise an accent word inside a heading or tagline. No italic display face is shipped; see The No Italic Accent Rule.

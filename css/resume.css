@@ -1,6 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════
    Editorial design — Space Grotesk + DM Serif Display
-   Bleu ardoise (default) / Vert sauge (toggle via .sage on #site)
+   Palette: Vert sauge, set directly in :root below.
+
+   Bleu ardoise — an alternative palette, NOT implemented. There is
+   no toggle and no .sage selector; swapping palettes means editing
+   the :root values. Kept here for reference only:
+     accent #3a5899   mid #7a9cc4   bg #f4f2ee
+     card   #ffffff   border #e0ddd8
    ═══════════════════════════════════════════════════════════════ */
 
 /* ── Self-hosted fonts ──────────────────────────────────────────── */
@@ -20,14 +26,6 @@
   src: url('../fonts/dm-serif-display-400.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-@font-face {
-  font-family: 'DM Serif Display';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('../fonts/dm-serif-display-400-italic.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 /* ── Custom Properties — Vert sauge ─────────────────────────────── */
 :root {
@@ -39,11 +37,6 @@
   --text:       #1c1c1c;
   --muted:      #5c5c5c;
   --subtle:     #888888;
-  --ph1:        #d4d6ce;
-  --ph2:        #c0ccc4;
-  --ph3:        #d2d6c8;
-  --ph4:        #c4ccc8;
-
   --f-display: 'DM Serif Display', Georgia, serif;
   --f-body:    'Space Grotesk', system-ui, sans-serif;
 }
@@ -109,10 +102,6 @@ nav {
   border-bottom: 0.5px solid var(--border);
 }
 
-.nav-name {
-  display: none;
-}
-
 .nav-links {
   display: flex;
   gap: 52px;
@@ -164,12 +153,6 @@ nav {
   color: var(--text);
   margin-bottom: 8px;
 }
-
-.hero-title em {
-  font-style: italic;
-  color: var(--accent);
-}
-
 
 .hero-bio {
   font-size: 0.9675rem;
@@ -561,11 +544,6 @@ nav {
   font-weight: 400;
   color: var(--text);
   line-height: 1.25;
-}
-
-.contact-tagline em {
-  font-style: italic;
-  color: var(--accent);
 }
 
 .contact-rule {

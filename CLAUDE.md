@@ -11,17 +11,18 @@ Personal resume/portfolio website for Alexandre Boucaud, based on the [StartBoot
 - `master` — source branch for development
 - `gh-pages` — deployed branch (GitHub Pages serves from here); this is the default remote branch
 
-To publish changes, merge or push to `gh-pages`.
+To publish, push or merge to `master` — the Actions workflow deploys to `gh-pages`. Never push to `gh-pages` by hand.
 
 ## Structure
 
-All content lives in `index.html`. Sections: `#projects`, `#talks`, `#contact` (plus `#carousel` in the hero).
+All content lives in `index.html`. Sections in order: hero, `#carousel`, `#projects`, `#talks`, `#contact`, footer.
 
 - `css/resume.css` — custom styles (the only stylesheet to edit)
 - `js/data.js` — single source of truth for personal info (name, email, institution, social links); edit this to update repeated values across the page
-- `js/main.js` — vanilla JS: config fill + photo carousel (auto-advance, prev/next, dots, pause-on-hover)
-- `fonts/` — self-hosted woff2 files (Instrument Serif, Space Grotesk — the only two active fonts)
-- `inputs/` — source assets: LaTeX CV (`main.tex`), design mockup (`mockup.html`), raw images
+- `js/main.js` — vanilla JS: config fill + photo carousel (auto-advance, prev/next, dots, swipe, deferred loading, pause on hover/touch/hidden tab/reduced motion)
+- `fonts/` — self-hosted woff2 files (DM Serif Display 400 roman, Space Grotesk 300–500 — the only two active families)
+- `img/small/` — 1000px-wide copies of the carousel photos, served below 700px; regenerate with `cwebp -resize 1000 0 -q 78`
+- `PRODUCT.md` / `DESIGN.md` — product truth and the design system. Read DESIGN.md before changing anything visual
 
 No build tooling — edits are made directly to `css/resume.css`, `js/data.js`, and `index.html`.
 
@@ -51,31 +52,32 @@ To update a name, URL, or social handle, edit only `js/data.js`. The following a
 Design direction: clean, editorial, minimal. Based on structure C from an iterative design process.
 
 Typography:
-- Display/headings: Instrument Serif (Google Fonts), italic for accent words
+- Display/headings: DM Serif Display (self-hosted), roman only — no italic face is shipped, deliberately
 - Body/UI: Space Grotesk, weights 300/400/500 only
 
-Color palette (both implemented; toggled via `.sage` CSS class on `#site`):
-- Bleu ardoise: accent #3a5899, mid #7a9cc4, bg #f4f2ee, card #ffffff, border #e0ddd8
-- Vert sauge:   accent #3d6b57, mid #8ab09a, bg #f3f4f0, card #ffffff, border #deded8
+Color palette — Vert sauge is the only implemented palette, set directly in `:root`:
+- Vert sauge:   accent #3d6b57, mid #8ab09a, bg #f4f2ee, card #ffffff, border #deded8
+- Bleu ardoise: accent #3a5899, mid #7a9cc4, bg #f4f2ee, card #ffffff, border #e0ddd8 — **not implemented**, kept as a reference comment at the top of `css/resume.css`
 
 Layout principles:
 - 2px single-color top accent bar (var --accent)
 - Static nav, scrolls away with the page
 - Hero: two-column grid (content left, metadata sidebar right)
-- Photo strip below hero: 4 columns, ~180px tall, placeholder for real images
-- Sections with Instrument Serif title + horizontal rule + metadata label
+- Photo carousel below hero: full width, 340px tall (220px below 700px, 200px in short landscape)
+- Sections with DM Serif Display title + horizontal rule + metadata label
 - Projects: 2-column grid of cards
 - Talks: minimal table-like list (year / title / venue)
-- Contact: two-column (tagline left, link rows right)
-- No shadows, no gradients, 0.5px borders throughout
+- Contact: centered tagline above a bordered row of link cells
+- No shadows (except the ambient glow around the page sheet), no gradients, 0.5px borders throughout
+- One breakpoint at 700px, refined by 380px, short-landscape, coarse-pointer and no-hover queries
 
 ## Deployment
 
-GitHub Actions (`deploy.yml`) auto-deploys `master` → `gh-pages` on push. Dev work happens on feature branches merged to `master`. The following files are excluded from the published site: `CLAUDE.md`, `.github`, `README.md`.
+GitHub Actions (`deploy.yml`) auto-deploys `master` → `gh-pages` on push. Dev work happens on feature branches merged to `master`. Excluded from the published site (`exclude_assets`): `.gitignore`, `.github`, `CLAUDE.md`, `README.md`, `PRODUCT.md`, `DESIGN.md`, `.impeccable`.
 
 ## Palette toggle
 
-**Not implemented.** The two palette definitions exist as CSS comments for reference, but the `.sage` selector, toggle UI, and `setPalette()` function have been removed. The active palette is Vert sauge (green accent `#3d6b57`) set directly in `:root`.
+**Not implemented.** The `.sage` selector, toggle UI, and `setPalette()` function were removed. The active palette is Vert sauge (green accent `#3d6b57`), set directly in `:root`; Bleu ardoise survives only as a reference comment at the top of `css/resume.css`.
 
 ## Carousel maintenance
 

@@ -10,14 +10,16 @@ Originally based on the [StartBootstrap-resume template](https://github.com/Blac
 
 **Self-hosted fonts** (`fonts/`), served as woff2 to avoid external requests:
 
-- [Instrument Serif](https://fonts.google.com/specimen/Instrument+Serif) — display headings, italic accents
+- [DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display) — display headings (roman only)
 - [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) — body and UI (weights 300 / 400 / 500)
 
 **Single stylesheet** (`css/resume.css`) using CSS custom properties for the color palette. No utility-class framework.
 
-**Vanilla JS** (`js/main.js`) — a single IIFE driving the photo carousel: auto-advance, prev/next buttons, dot navigation, and pause-on-hover.
+**Vanilla JS** (`js/main.js`) — two IIFEs: one fills personal details from `js/data.js`, one drives the photo carousel (auto-advance, prev/next, dots, swipe, deferred image loading, and pausing on hover, touch, hidden tab or `prefers-reduced-motion`).
 
-**GitHub Actions** (`.github/deploy.yml`) auto-deploys the `master` branch to `gh-pages` on every push.
+**Responsive images** (`img/small/`) — 1000px-wide copies of each carousel photo, served to viewports at or below 700px. Slides carry `data-bg` and load on demand, so a visit fetches the slide on screen and its two neighbours rather than all thirteen.
+
+**GitHub Actions** (`.github/workflows/deploy.yml`) auto-deploys the `master` branch to `gh-pages` on every push.
 
 ## Development
 
