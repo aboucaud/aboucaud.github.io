@@ -19,7 +19,7 @@ All content lives in `index.html`. Sections in order: hero, `#carousel`, `#proje
 
 - `css/resume.css` — custom styles (the only stylesheet to edit)
 - `js/main.js` — vanilla JS: external-link `target`/`rel` + photo carousel (auto-advance, prev/next, dots, swipe, deferred loading, pause on hover/touch/keyboard-focus/hidden tab/reduced motion)
-- `fonts/` — self-hosted woff2 files (DM Serif Display 400 roman, Space Grotesk 300–500 — the only two active families)
+- `fonts/` — self-hosted woff2 files (IBM Plex Serif 400 roman, Space Grotesk 300–500 — the only two active families)
 - `img/small/` — 1000px-wide copies of the carousel photos, served below 700px; regenerate with `cwebp -resize 1000 0 -q 78`
 - `PRODUCT.md` / `DESIGN.md` — product truth and the design system. Read DESIGN.md before changing anything visual
 
@@ -42,8 +42,10 @@ Contact rows carry `.side-link` so the same JS applies `target`/`rel`. The mailt
 Design direction: clean, editorial, minimal. Based on structure C from an iterative design process.
 
 Typography:
-- Display/headings: DM Serif Display (self-hosted), roman only — no italic face is shipped, deliberately
+- Display/headings: IBM Plex Serif (self-hosted), roman only — no italic face is shipped, deliberately
+- Alternative display face, vetted and ready: Spectral 400 (OFL) — see the comment above the @font-face block in `css/resume.css`
 - Body/UI: Space Grotesk, weights 300/400/500 only
+- Seven type sizes total, declared as `--t-*` tokens in `:root`. Nothing readable goes below 11px, and new elements pick an existing role rather than adding an eighth size.
 
 Color palette — Vert sauge is the only implemented palette, set directly in `:root`:
 - Vert sauge:   accent #3d6b57, mid #8ab09a, bg #f4f2ee, card #ffffff, border #deded8
@@ -54,7 +56,7 @@ Layout principles:
 - Static nav, scrolls away with the page
 - Hero: two-column grid (content left, metadata sidebar right)
 - Photo carousel below hero: full width, 340px tall (220px below 700px, 200px in short landscape)
-- Sections with DM Serif Display title + horizontal rule + metadata label
+- Sections with IBM Plex Serif title + horizontal rule + metadata label
 - Projects: 2-column grid of cards
 - Talks: minimal table-like list (year / title / venue)
 - Contact: centered tagline above a bordered row of link cells

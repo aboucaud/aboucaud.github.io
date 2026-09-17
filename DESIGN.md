@@ -14,47 +14,47 @@ colors:
   photo-ground: "#111111"
 typography:
   display:
-    fontFamily: "DM Serif Display, Georgia, serif"
-    fontSize: "clamp(1.9rem, 4.5vw, 2.7rem)"
+    fontFamily: "IBM Plex Serif, Plex Fallback, Georgia, serif"
+    fontSize: "clamp(2.1rem, 5vw, 3rem)"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.12
     letterSpacing: "normal"
   headline:
-    fontFamily: "DM Serif Display, Georgia, serif"
-    fontSize: "clamp(1.5rem, 3.5vw, 1.875rem)"
+    fontFamily: "IBM Plex Serif, Plex Fallback, Georgia, serif"
+    fontSize: "clamp(1.6rem, 3.5vw, 2rem)"
     fontWeight: 400
-    lineHeight: 1.25
+    lineHeight: 1.15
     letterSpacing: "normal"
-  nav:
-    fontFamily: "DM Serif Display, Georgia, serif"
-    fontSize: "1.15rem"
-    fontWeight: 400
-    lineHeight: 1.7
-    letterSpacing: "0.01em"
   title:
-    fontFamily: "Space Grotesk, system-ui, sans-serif"
-    fontSize: "1rem"
+    fontFamily: "Space Grotesk, Grotesk Fallback, system-ui, sans-serif"
+    fontSize: "1.125rem"
     fontWeight: 500
     lineHeight: 1.3
     letterSpacing: "normal"
   body:
-    fontFamily: "Space Grotesk, system-ui, sans-serif"
-    fontSize: "0.9675rem"
+    fontFamily: "Space Grotesk, Grotesk Fallback, system-ui, sans-serif"
+    fontSize: "1rem"
     fontWeight: 300
-    lineHeight: 1.85
+    lineHeight: 1.75
     letterSpacing: "normal"
-  body-small:
-    fontFamily: "Space Grotesk, system-ui, sans-serif"
-    fontSize: "0.8125rem"
+  supporting:
+    fontFamily: "Space Grotesk, Grotesk Fallback, system-ui, sans-serif"
+    fontSize: "0.875rem"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.55
+    letterSpacing: "normal"
+  small:
+    fontFamily: "Space Grotesk, Grotesk Fallback, system-ui, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 300
+    lineHeight: 1.65
     letterSpacing: "normal"
   label:
-    fontFamily: "Space Grotesk, system-ui, sans-serif"
-    fontSize: "0.625rem"
+    fontFamily: "Space Grotesk, Grotesk Fallback, system-ui, sans-serif"
+    fontSize: "0.6875rem"
     fontWeight: 500
-    lineHeight: 1.7
-    letterSpacing: "0.2em"
+    lineHeight: 1.4
+    letterSpacing: "0.18em"
 rounded:
   none: "0"
   chip: "3px"
@@ -77,7 +77,7 @@ components:
     width: "960px"
   nav-link:
     textColor: "{colors.muted-ink}"
-    typography: "{typography.nav}"
+    typography: "{typography.title}"
   nav-link-hover:
     textColor: "{colors.observatory-sage}"
   project-card:
@@ -132,7 +132,7 @@ This is the homepage of someone who builds things that have to work. Everything 
 
 The structure is a bounded cream sheet, never wider than 960px, sitting on a dark ground. Inside it, two paper tones alternate to separate sections, and every division is drawn with a 0.5px line rather than a shadow or a gap. Density is deliberately high — the hero sidebar packs six labelled blocks into a column narrower than the bio beside it — but line-height stays generous (1.7–1.85) so the page reads calm rather than cramped. Thirteen first-hand photographs from the Vera C. Rubin Observatory sit in a full-width band at the page's midpoint; they are the one place the system stops being quiet.
 
-**One direction is deliberately unsettled.** The display face is currently DM Serif Display, which pulls the page toward *academic paper* rather than *engineer's homepage*. That serif is recorded here as the current implementation, not as a settled decision — it is the one token a future pass is expected to revisit. Everything else in this file is the standard.
+**The display face is settled.** IBM Plex Serif replaced DM Serif Display, whose high stroke contrast pulled the page toward *editorial magazine* rather than *engineer's homepage*. Plex Serif keeps the two-voice structure — a serif for names, a grotesque for everything else — while trading expressive contrast for an even, engineered stroke. Spectral 400 is a vetted alternative, recorded in the stylesheet, if the page should ever read more elegantly again.
 
 **Key Characteristics:**
 
@@ -141,7 +141,7 @@ The structure is a bounded cream sheet, never wider than 960px, sitting on a dar
 - 0.5px hairline rules as the only structural device
 - Completely flat: one shadow exists in the entire system
 - One accent, used only on links, tags, and live actions
-- Tiny wide-tracked uppercase labels as the connective tissue
+- Tiny wide-tracked uppercase labels as the connective tissue, at one size and one tracking
 - Square corners by default; radius is the exception, never the rule
 - Real photography given a full-width band and honest credits
 
@@ -176,22 +176,26 @@ A muted, warm-neutral palette: two paper tones, a four-step grey ink scale, and 
 
 ## Typography
 
-**Display Font:** DM Serif Display (with Georgia, serif) — *self-hosted woff2, 400 roman only; no italic is shipped*
+**Display Font:** IBM Plex Serif (with a metric-matched Georgia fallback) — *self-hosted woff2, 400 roman only; no italic is shipped*
 **Body Font:** Space Grotesk (with system-ui, sans-serif) — *self-hosted woff2, variable 300–500*
 
-**Character:** A high-contrast serif for names and titles against a geometric grotesk with slightly odd, technical letterforms for everything else. The grotesk does the real work; it carries body copy at 300 and every micro-label at 500. Both faces are self-hosted as woff2 with a Latin-only unicode-range — the page makes no external font requests.
+**Character:** A low-contrast, evenly-stroked serif for names and titles against a geometric grotesk with slightly odd, technical letterforms for everything else. The serif is calm rather than expressive — it gives the name authority without making the page look like a magazine. The grotesk does the real work; it carries body copy at 300 and every micro-label at 500. Both faces are self-hosted as woff2 with a Latin-only unicode-range — the page makes no external font requests.
 
-**Note:** the DM Serif Display pairing is under review (see Overview). Treat the *roles* below as settled and the display family itself as provisional.
+**Fallbacks are metric-matched.** Measured at 100px, IBM Plex Serif renders at 93.7% of Georgia's width and Space Grotesk at 104.6% of Arial's. Two `@font-face` rules carry those as `size-adjust`, so the swap from fallback to webfont does not reflow the page.
 
 ### Hierarchy
 
-- **Display** (DM Serif Display 400, `clamp(1.9rem, 4.5vw, 2.7rem)`, 1.5): The person's name in the hero, and nothing else.
-- **Headline** (DM Serif Display 400, `clamp(1.5rem, 3.5vw, 1.875rem)`, inherited 1.7): Section titles. The contact tagline is the same face one step larger (`clamp(1.6rem, 3.5vw, 2.1rem)`) at a tighter 1.25.
-- **Nav** (DM Serif Display 400, `1.15rem`, `0.01em`): Navigation links only — the one place the serif appears at small size.
-- **Title** (Space Grotesk 500, `1rem`, 1.3): Project names.
-- **Body** (Space Grotesk 300, `0.9675rem`, 1.85, max-width 420px): The hero bio. The most generous line-height in the system, and the only text with a hard measure.
-- **Body Small** (Space Grotesk 300–400, `0.78125rem`–`0.8125rem`, 1.5–1.75): Project descriptions, talk titles, sidebar values.
-- **Label** (Space Grotesk 500, `0.5rem`–`0.625rem`, letter-spacing `0.14em`–`0.22em`, uppercase, Subtle Ink): Every metadata label on the page.
+Seven sizes for the whole page, declared once as `--t-*` tokens. No role sets a size of its own.
+
+| Role | Token | Size | Weight | Line height | Used by |
+|---|---|---|---|---|---|
+| Display | `--t-display` | `clamp(2.1rem, 5vw, 3rem)` | 400 | 1.12 | the name, and nothing else |
+| Headline | `--t-headline` | `clamp(1.6rem, 3.5vw, 2rem)` | 400 | 1.15 | section titles, contact tagline |
+| Title | `--t-title` | `1.125rem` (18px) | 500 / 400 | 1.3 / 1.4 | project names; nav links, in the serif |
+| Body | `--t-body` | `1rem` (16px) | 300 | 1.75 | the hero bio, at a 57-character measure |
+| Supporting | `--t-supporting` | `0.875rem` (14px) | 300–400 | 1.55–1.65 | project descriptions, talk titles, sidebar values, degrees |
+| Small | `--t-small` | `0.75rem` (12px) | 300–400 | 1.4–1.65 | years, venues, schools, contact values, footer, photo captions |
+| Label | `--t-label` | `0.6875rem` (11px) | 500 | 1.4 | every uppercase micro-label |
 
 ### Named Rules
 
@@ -203,7 +207,11 @@ A muted, warm-neutral palette: two paper tones, a four-step grey ink scale, and 
 
 **The No Italic Accent Rule.** Never italicise a word inside a heading or tagline for emphasis — not in the accent colour, not in the display face, not anywhere. The accented italic word in an otherwise roman heading is a generated-site tell, and no italic display face is shipped precisely so the pattern cannot return. Emphasis in this system comes from size, weight, and the accent colour on whole elements, never from a decorative word swap.
 
-**The Sub-Rem Rule.** Almost nothing on this page is set at or above `1rem`. Body copy runs at `0.9675rem` and supporting text at `0.6875rem`–`0.8125rem`. The smallness is the aesthetic — it reads as technical documentation rather than marketing. Preserve it; do not "fix" the page by scaling type up.
+**The Eleven-Pixel Floor Rule.** Nothing a visitor has to read is set below `11px`, ever — not a caption, not a year, not a footer line. The page still reads small and dense, which is the aesthetic; density is achieved with tight spacing and a restrained palette, never by shrinking type past the point where it can be read. This rule replaced an earlier one that protected sizes down to 8px, and it is not negotiable back.
+
+**The Seven Sizes Rule.** The page has exactly seven type sizes, declared as `--t-*` tokens. A new element picks the nearest existing role; it does not introduce an eighth value. Sizes a pixel apart are not hierarchy — they are noise that reads as carelessness.
+
+**The One Tracking Rule.** Every uppercase micro-label is tracked at `--track-label` (`0.18em`). One role, one tracking. Earlier the same label appeared at five different trackings across three sizes, which made a single idea look like five.
 
 ## Layout
 
@@ -304,7 +312,7 @@ The one place the system is loud, and the component the whole page is built arou
 - **Slides:** Absolutely stacked, cross-faded on `opacity 1.0s ease` with a z-index swap during the transition so the outgoing slide never flashes above the incoming one. Auto-advances every `5000ms`, pausing on hover, on touch, on a hidden tab, and entirely under `prefers-reduced-motion`.
 - **Loading:** Slides carry `data-bg` rather than a background image; only the current slide and its two neighbours are fetched, and viewports at or below `700px` are served the `img/small/` copies. The first slide keeps a small inline background so the band still renders without JS.
 - **Scrim:** Every slide carries a bottom-up gradient (`rgba(0,0,0,0.55)` → `rgba(0,0,0,0.15)` at 40% → transparent at 70%) so captions stay legible over any image.
-- **Caption:** Bottom-left, `0.5625rem` uppercase at `0.14em` in `rgba(255,255,255,0.85)`, no text-shadow — the scrim does that job. Captions carry photo credits and are content, not decoration.
+- **Caption:** Bottom-left, Small (`0.75rem`) in sentence case at `rgba(255,255,255,0.92)`, no text-shadow — the scrim does that job. Captions carry photo credits and are content, not decoration, so they are set to be read rather than to look like labels.
 - **Controls:** `36px` circles (`44px` on coarse pointers) at `rgba(0,0,0,0.25)` with a 0.5px `rgba(255,255,255,0.3)` border and `blur(4px)` backdrop; hover deepens to `0.5` and brightens the border. Hidden below 700px.
 - **Accessibility:** the band is a `<section>` carrying `aria-roledescription="carousel"`; each slide is a labelled group and inactive ones are `aria-hidden`; dots are plain buttons with `aria-current`, never tabs; the slide container is `aria-live="off"` until the visitor navigates by hand.
 - **Dots:** A `5px` circle at `rgba(255,255,255,0.35)`, active at `0.9`, drawn as a pseudo-element centred inside a `16x34` transparent button — the mark stays small, the tap target does not.
@@ -334,7 +342,7 @@ The one place the system is loud, and the component the whole page is built arou
 - **Don't** introduce a second accent color or a semantic color set.
 - **Don't** fill a surface with Observatory Sage or set text on top of it.
 - **Don't** round a card, section, or panel beyond the established `3px` / `4px` exceptions.
-- **Don't** scale the type up to make the page feel friendlier — the sub-`1rem` scale is the aesthetic.
+- **Don't** introduce an eighth type size, or set anything readable below `11px`. See The Seven Sizes Rule and The Eleven-Pixel Floor Rule.
 - **Don't** use a 1px border where the system uses 0.5px.
 - **Don't** set body copy or labels in the display face.
 - **Don't** treat the photographs as decoration that can be cropped, swapped for stock, or stripped of credits.

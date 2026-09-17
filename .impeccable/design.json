@@ -168,31 +168,31 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The person's name in the hero, and nothing else. Roman only — no italic face is shipped. Display family is provisional — under review."
+        "purpose": "The name in the hero, and nothing else. IBM Plex Serif 400, roman only."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Section titles; the contact tagline one step larger at clamp(1.6rem, 3.5vw, 2.1rem) / 1.25."
-      },
-      "nav": {
-        "displayName": "Nav",
-        "purpose": "Navigation links only — the one place the serif appears at small size."
+        "purpose": "Section titles and the contact tagline."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Project names."
+        "purpose": "Project names in the grotesque; nav links at the same size in the serif."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "The hero bio. The only text with a hard 420px measure."
+        "purpose": "The hero bio, at a 57-character measure — the only text with a hard measure."
       },
-      "body-small": {
-        "displayName": "Body Small",
-        "purpose": "Project descriptions, talk titles, sidebar values. Runs 0.78125rem–0.8125rem."
+      "supporting": {
+        "displayName": "Supporting",
+        "purpose": "Project descriptions, talk titles, sidebar values, degrees."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Years, venues, schools, contact values, footer, photo captions."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Every metadata label. Always uppercase, 500 weight, 0.5rem–0.625rem, tracked 0.14em–0.22em."
+        "purpose": "Every uppercase micro-label, at one size and one tracking (0.18em)."
       }
     },
     "shadows": [
@@ -291,6 +291,29 @@
         "name": "carousel-height",
         "value": "340px / 220px / 200px",
         "purpose": "Desktop / below 700px / short landscape viewports."
+      }
+    ],
+    "fontFallbacks": [
+      {
+        "webfont": "IBM Plex Serif",
+        "fallback": "Georgia",
+        "sizeAdjust": "93.7%",
+        "purpose": "Measured at 100px; keeps the swap from reflowing the page."
+      },
+      {
+        "webfont": "Space Grotesk",
+        "fallback": "Arial",
+        "sizeAdjust": "104.6%",
+        "purpose": "Measured at 100px; keeps the swap from reflowing the page."
+      }
+    ],
+    "alternateFaces": [
+      {
+        "role": "display",
+        "family": "Spectral 400",
+        "size": "13.7 KB",
+        "license": "OFL",
+        "note": "Vetted alternative to IBM Plex Serif — sharper and more elegant, closer to the previous DM Serif Display. Swap the @font-face src and family name; nothing else changes."
       }
     ]
   },
@@ -403,11 +426,6 @@
         "section": "typography"
       },
       {
-        "name": "The Sub-Rem Rule",
-        "body": "Almost nothing on this page is set at or above 1rem. Body copy runs at 0.9675rem and supporting text at 0.6875rem–0.8125rem. The smallness is the aesthetic — it reads as technical documentation rather than marketing. Preserve it; do not fix the page by scaling type up.",
-        "section": "typography"
-      },
-      {
         "name": "The Bounded Sheet Rule",
         "body": "Content is capped at 960px and the page is always a finite object on a ground, never an edge-to-edge website. Any new section lives inside the sheet.",
         "section": "layout"
@@ -446,6 +464,21 @@
         "name": "The Stoppable Motion Rule",
         "body": "Any motion that starts on its own must be stoppable by every input method — pointer, touch, and keyboard focus alike. The carousel pauses on all three. Motion a visitor cannot stop is a failure regardless of how well it is drawn.",
         "section": "elevation"
+      },
+      {
+        "name": "The Eleven-Pixel Floor Rule",
+        "body": "Nothing a visitor has to read is set below 11px, ever — not a caption, not a year, not a footer line. The page still reads small and dense, which is the aesthetic; density is achieved with tight spacing and a restrained palette, never by shrinking type past the point where it can be read.",
+        "section": "typography"
+      },
+      {
+        "name": "The Seven Sizes Rule",
+        "body": "The page has exactly seven type sizes, declared as --t-* tokens. A new element picks the nearest existing role; it does not introduce an eighth value. Sizes a pixel apart are not hierarchy — they are noise that reads as carelessness.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Tracking Rule",
+        "body": "Every uppercase micro-label is tracked at --track-label (0.18em). One role, one tracking.",
+        "section": "typography"
       }
     ],
     "dos": [
@@ -463,7 +496,6 @@
       "Don't introduce a second accent color or a semantic color set.",
       "Don't fill a surface with Observatory Sage or set text on top of it.",
       "Don't round a card, section, or panel beyond the established 3px / 4px exceptions.",
-      "Don't scale the type up to make the page feel friendlier — the sub-1rem scale is the aesthetic.",
       "Don't use a 1px border where the system uses 0.5px.",
       "Don't set body copy or labels in the display face.",
       "Don't treat the photographs as decoration that can be cropped, swapped for stock, or stripped of credits.",
@@ -471,7 +503,8 @@
       "Don't italicise an accent word inside a heading or tagline. No italic display face is shipped; see The No Italic Accent Rule.",
       "Don't put a category tag, kicker, or eyebrow above a heading. See The Name Comes First Rule.",
       "Don't ship content that only exists once JavaScript has run. Every word belongs in the markup; scripts enhance, they do not supply.",
-      "Don't let an element announce a role it does not fulfil — role=\"tab\" without a tabpanel is worse for a screen reader than no role at all."
+      "Don't let an element announce a role it does not fulfil — role=\"tab\" without a tabpanel is worse for a screen reader than no role at all.",
+      "Don't introduce an eighth type size, or set anything readable below 11px. See The Seven Sizes Rule and The Eleven-Pixel Floor Rule."
     ]
   }
 }

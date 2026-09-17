@@ -10,10 +10,10 @@ Originally based on the [StartBootstrap-resume template](https://github.com/Blac
 
 **Self-hosted fonts** (`fonts/`), served as woff2 to avoid external requests:
 
-- [DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display) — display headings (roman only)
+- [IBM Plex Serif](https://fonts.google.com/specimen/IBM+Plex+Serif) — display headings (roman only)
 - [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) — body and UI (weights 300 / 400 / 500)
 
-**Single stylesheet** (`css/resume.css`) using CSS custom properties for the color palette. No utility-class framework.
+**Single stylesheet** (`css/resume.css`) using CSS custom properties for the colour palette and a seven-step type scale. No utility-class framework.
 
 **Vanilla JS** (`js/main.js`) — two IIFEs: one applies `target`/`rel` to external links, one drives the photo carousel (auto-advance, prev/next, dots, swipe, deferred image loading, and pausing on hover, touch, keyboard focus, hidden tab or `prefers-reduced-motion`).
 
