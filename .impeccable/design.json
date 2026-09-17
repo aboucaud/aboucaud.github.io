@@ -398,7 +398,7 @@
       "name": "Photo Slide",
       "kind": "custom",
       "refersTo": null,
-      "description": "The signature band: a full-width photograph under a bottom-up scrim with an uppercase caption carrying the credit.",
+      "description": "The signature band: a full-width photograph under a bottom-up scrim with an uppercase-free caption carrying the credit. Images load on demand — visible slide immediately, neighbours at idle.",
       "html": "<div class=\"ds-slide\"><span class=\"ds-slide-caption\">Rubin Observatory at twilight · Cerro Pachón, Chile</span></div>",
       "css": ".ds-slide { position: relative; height: 180px; background: linear-gradient(135deg, #2a3340, #55606b) center / cover no-repeat, #111; display: flex; align-items: flex-end; padding: 14px 20px; overflow: hidden; } .ds-slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 40%, transparent 70%); pointer-events: none; } .ds-slide-caption { position: relative; z-index: 1; font-family: var(--f-body, 'Space Grotesk', system-ui, sans-serif); font-size: 0.5625rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.85); }"
     }

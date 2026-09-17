@@ -60,7 +60,18 @@
     pre.src = url;
   }
 
-  function loadAround(i) { load(i); load(i + 1); load(i - 1); }
+  /* The slide on screen is fetched at once; its neighbours wait for
+     idle. Eagerly prefetching both put ~2 MB on the wire before first
+     paint for images the visitor may never reach — and the first
+     auto-advance is five seconds away, so idle is early enough. */
+  const whenIdle = fn => ('requestIdleCallback' in window)
+    ? requestIdleCallback(fn, { timeout: 2000 })
+    : setTimeout(fn, 600);
+
+  function loadAround(i, includePrevious = true) {
+    load(i);
+    whenIdle(() => { load(i + 1); if (includePrevious) load(i - 1); });
+  }
 
   /* Crossing the phone/desktop boundary re-resolves what's on screen. */
   const onBreakpoint = () => loadAround(current);
@@ -176,7 +187,11 @@
   carousel.addEventListener('touchcancel', () => { tracking = false; sync(); }, { passive: true });
 
   /* ── Start ─────────────────────────────────────────────────────── */
-  loadAround(0);
+  /* On arrival only the visible slide and the one after it are worth
+     fetching. The slide *before* the first is the last of thirteen —
+     half a megabyte for a backwards click almost nobody makes on
+     landing. It loads on demand if they do. */
+  loadAround(0, false);
   sync();
   if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', sync);
 }());

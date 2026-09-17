@@ -137,7 +137,6 @@ a:hover { opacity: 0.7; }
 :where(a, button):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 1px;
 }
 
 /* Selection and caret belong to the palette too. */
